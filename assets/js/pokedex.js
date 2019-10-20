@@ -51,7 +51,7 @@ new Vue({
 
     methods: {
         url(index) {
-            this.urlPokemon = `http://localhost/ProjetJavaScriptPokemon/pokemon_desc.php?id=${index}`
+            this.urlPokemon = `http://localhost/Poke-projet/pokemon_desc.php?id=${index}`
         },
 
         pokedex(){
