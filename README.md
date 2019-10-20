@@ -1,2 +1,2 @@
 # ProjetJavaScriptPokemon
-Projet JavaScipt pokemon réaliser par Jeremy RICHARD et Louis ARDILLY
+Projet JavaScript pokemon réaliser par Jeremy RICHARD et Louis ARDILLY
