@@ -31,10 +31,33 @@ a{
     margin: 0 0 1.5rem;
 }
 
-.poke-filter{
+.poke-filter-container{
     background: #f6f6f6;
-    border-radius:20px;
+    border-radius: 20px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px 10px;
+    
+}
+.searchbar{
+    display: flex;
+}
+.poke-searchbar{
+    border: 3px solid #e91d26;
+    height: 40px;
+    width: 200px;
+    border-radius: 50px 0 0 50px;
+    padding: 0 10px;
+}
+.searchbar-button{
+    border: 3px solid #e91d26;
+    background: #e91d26;
+    color: white;
+    height: 46px;
+    border-radius: 0 50px 50px 0;
+    padding: 0 12px;
+}
+i{
+    font-size: 20px;
 }
 
 .pokemon{

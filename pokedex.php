@@ -5,10 +5,17 @@
     <div id="pokedex">
         <div class="pokedex-content-container">
             <div id="filter" class="poke-filter">
-                <input type="text" v-model="name">
-                <button v-on:click="filter()">Valider</button>
-                <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
-                <button v-on:click="pokedex()" v-else>Afficher le pokedex entier</button>
+                <div class="poke-filter-container">
+                    <div class="searchbar">
+                        <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar">
+                            <button v-on:click="filter()" class="searchbar-button"><i class="fas fa-search"></i></button>
+                    </div>
+
+                    <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
+                    <button v-on:click="pokedex()" v-else>Afficher le pokedex entier</button>
+
+                </div>
+
             </div>
             <div class="poke-container">
 
