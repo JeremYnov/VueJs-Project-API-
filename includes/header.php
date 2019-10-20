@@ -1,5 +1,3 @@
-<?php require_once("includes/function.php") ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
-    <?php if($_SERVER["SCRIPT_NAME"] === "/ProjetJavaScriptPokemon/pokedex.php"): ?>
+    <?php if($_SERVER["SCRIPT_NAME"] === "/Poke-projet/pokedex.php"): ?>
     <link rel="stylesheet" href="assets/css/pokedex.css">
     <script src="assets/js/pokedex.js" async></script>
     <title>Pokédex</title>
-    <?php elseif($_SERVER["SCRIPT_NAME"] === "/ProjetJavaScriptPokemon/pokemon_desc.php"): ?>
+    <?php elseif($_SERVER["SCRIPT_NAME"] === "/Poke-projet/pokemon_desc.php"): ?>
     <script src="assets/js/pokemon_desc.js" async></script>
     <script src="assets/js/title.js" async></script>
     <div id="title">
