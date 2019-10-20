@@ -1,3 +1,5 @@
+<?php require_once("includes/function.php") ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,7 +19,7 @@
     <script src="assets/js/pokemon_desc.js" async></script>
     <script src="assets/js/title.js" async></script>
     <div id="title">
-    <title>{{ infoPokemon.name }}</title>
+    <title>{{ namePokemon[0] }}</title>
     </div>
     <?php endif ?>
 </head>

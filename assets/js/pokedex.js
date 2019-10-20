@@ -3,6 +3,7 @@ new Vue({
     data: {
         urlPokemon: 'tsgdfhg',
         infoPokemon: [],
+        namePokemon: []
     },
 
 
@@ -20,21 +21,27 @@ new Vue({
                             let pokemon
                             if (result.types[1]) {
                                 pokemon = {
-                                    id: result.id, image: result.sprites.front_default, name: result.name,
+                                    id: result.id, image: result.sprites.front_default,
                                     type1: result.types[0].type.name, type2: result.types[1].type.name
                                 }
                             } else {
                                 pokemon = {
-                                    id: result.id, image: result.sprites.front_default, name: result.name,
+                                    id: result.id, image: result.sprites.front_default,
                                     type1: result.types[0].type.name
                                 }
                             }  
                             // this.infoPokemon[result.id] = pokemon
                             this.infoPokemon.push(pokemon)
-                            console.log(this.infoPokemon) 
+                            
+                        })
+                        fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
+                        .then(result => result.json())
+                        .then(result => { 
+                            pokemon = result.names[6].name
+                            this.namePokemon.push(pokemon)
                         })
                 }
-                
+                console.log(this.namePokemon) 
             })
 
     },

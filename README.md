@@ -1,2 +1,2 @@
-# Poke-Projet
-Projet JavaScript / Vue.JS 
+# ProjetJavaScriptPokemon
+Projet JavaScipt pokemon réaliser par Jeremy RICHARD et Louis ARDILLY

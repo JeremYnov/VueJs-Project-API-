@@ -63,13 +63,11 @@ a{
     font-size : 30px;
     color: #3b3b3b;
     padding: 8% 5%;
-    text-transform: capitalize;
 }
 
 .poke-type{
     display: flex;
     justify-content: space-between;
-    
 }
 .type{
     padding: 8px;
@@ -78,8 +76,7 @@ a{
     border-radius: 10px;
     font-size: 15px;
     width: 110px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-    text-transform: capitalize;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5)
 }
 
 .normal{background:#a7a99d ;}
