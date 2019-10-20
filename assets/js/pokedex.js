@@ -1,9 +1,12 @@
 new Vue({
-    el: '#primary',
+    el: '#pokedex',
     data: {
         urlPokemon: '',
         infoPokemon: [],
-        namePokemon: []
+        namePokemon: [],
+        name: '',
+        filterName: '',
+        FilterCheck: false
     },
 
 
@@ -29,19 +32,18 @@ new Vue({
                                     id: result.id, image: result.sprites.front_default,
                                     type1: result.types[0].type.name
                                 }
-                            }  
+                            }
                             // this.infoPokemon[result.id] = pokemon
                             this.infoPokemon.push(pokemon)
-                            
+
                         })
-                        fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
+                    fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
                         .then(result => result.json())
-                        .then(result => { 
+                        .then(result => {
                             pokemon = result.names[6].name
                             this.namePokemon.push(pokemon)
                         })
                 }
-                console.log(this.namePokemon) 
             })
 
     },
@@ -51,6 +53,30 @@ new Vue({
         url(index) {
             this.urlPokemon = `http://localhost/ProjetJavaScriptPokemon/pokemon_desc.php?id=${index}`
         },
+
+
+        filter() {
+            console.log("ok")
+            let validate = 0
+            for (let index = 0; index < this.namePokemon.length; index++) {
+                if (this.name == this.namePokemon[index]) {
+                    this.FilterCheck = true
+                    validate = 1
+                    console.log(this.FilterCheck)
+                    if(this.infoPokemon[index].type2){
+                        this.filterName = {name: this.namePokemon[index], id:  this.infoPokemon[index].id, image:  this.infoPokemon[index].image,
+                            type1:  this.infoPokemon[index].type1, type2:  this.infoPokemon[index].type2}
+                    } else{
+                        this.filterName = {name: this.namePokemon[index], id:  this.infoPokemon[index].id, image:  this.infoPokemon[index].image,
+                            type1:  this.infoPokemon[index].type1}
+                    }
+                }
+            }
+            if(validate == 0){
+                this.FilterCheck = false  
+            }
+            console.log(this.filterName)
+        }
     }
 
 })
