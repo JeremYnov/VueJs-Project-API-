@@ -1,7 +1,7 @@
 new Vue({
     el: '#primary',
     data: {
-        urlPokemon: 'tsgdfhg',
+        urlPokemon: '',
         infoPokemon: [],
         namePokemon: []
     },
