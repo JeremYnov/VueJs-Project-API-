@@ -5,7 +5,7 @@ new Vue({
         infoPokemon: [],
         namePokemon: [],
         name: '',
-        filterName: '',
+        filterName: [],
         FilterCheck: false
     },
 
@@ -54,29 +54,34 @@ new Vue({
             this.urlPokemon = `http://localhost/ProjetJavaScriptPokemon/pokemon_desc.php?id=${index}`
         },
 
+        pokedex(){
+            this.FilterCheck = false
+        },
 
         filter() {
-            console.log("ok")
+            this.filterName = []
             let validate = 0
+            let info
             for (let index = 0; index < this.namePokemon.length; index++) {
-                if (this.name == this.namePokemon[index]) {
+                if (this.namePokemon[index].indexOf(this.name) === 0) {
                     this.FilterCheck = true
                     validate = 1
-                    console.log(this.FilterCheck)
                     if(this.infoPokemon[index].type2){
-                        this.filterName = {name: this.namePokemon[index], id:  this.infoPokemon[index].id, image:  this.infoPokemon[index].image,
+                        info = {name: this.namePokemon[index], id:  this.infoPokemon[index].id, image:  this.infoPokemon[index].image,
                             type1:  this.infoPokemon[index].type1, type2:  this.infoPokemon[index].type2}
                     } else{
-                        this.filterName = {name: this.namePokemon[index], id:  this.infoPokemon[index].id, image:  this.infoPokemon[index].image,
+                        info = {name: this.namePokemon[index], id:  this.infoPokemon[index].id, image:  this.infoPokemon[index].image,
                             type1:  this.infoPokemon[index].type1}
                     }
+                    this.filterName.push(info)
                 }
             }
             if(validate == 0){
                 this.FilterCheck = false  
             }
-            console.log(this.filterName)
-        }
+        },
+
+        
     }
 
 })

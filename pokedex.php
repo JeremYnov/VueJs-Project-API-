@@ -7,6 +7,8 @@
             <div id="filter" class="poke-filter">
                 <input type="text" v-model="name">
                 <button v-on:click="filter()">Valider</button>
+                <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
+                <button v-on:click="pokedex()" v-else>Afficher le pokedex entier</button>
             </div>
             <div class="poke-container">
 
@@ -78,62 +80,62 @@
 
                 <div v-if="FilterCheck == true">
                     <div class="poke-wrapper">
-                        <div v-on:click="url(filterName.id)" class="pokemon">
+                        <div v-on:click="url(filterName[index].id)" v-for="(todo, index) in filterName" class="pokemon">
                             <a v-bind:href="urlPokemon">
                                 <div class="poke-image">
-                                    <img :src="filterName.image" alt="">
+                                    <img :src="filterName[index].image" alt="">
                                 </div>
                                 <div class="poke-infos">
                                     <div class="poke-id">
-                                        <p v-if="filterName.id < 9">N°00{{ filterName.id }}</p>
-                                        <p v-else-if="filterName.id < 99">N°0{{ filterName.id }}</p>
-                                        <p v-else>N°{{ filterName.id }}</p>
+                                        <p v-if="filterName[index].id < 9">N°00{{ filterName[index].id }}</p>
+                                        <p v-else-if="filterName[index].id < 99">N°0{{ filterName[index].id }}</p>
+                                        <p v-else>N°{{ filterName[index].id }}</p>
                                     </div>
                                     <div class="poke-name">
-                                        <p>{{ filterName.name }}</p>
+                                        <p>{{ filterName[index].name }}</p>
                                     </div>
                                     <div class="poke-type">
-                                        <div v-if=" filterName.type1 == 'fire'" class="type fire">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'poison'" class="type poison">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'normal'" class="type normal">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'fighting'" class="type fighting">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'flying'" class="type flying">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'ground'" class="type ground">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'rock'" class="type rock">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'bug'" class="type bug">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'ghost'" class="type ghost">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'steel'" class="type steel">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'water'" class="type water">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'grass'" class="type grass">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'electric'" class="type electric">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'psychic'" class="type psychic">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'ice'" class="type ice">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'dragon'" class="type dragon">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'dark'" class="type dark">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'fairy'" class="type fairy">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'unknown'" class="type unknown">{{ filterName.type1 }}</div>
-                                        <div v-else-if="filterName.type1 == 'shadow'" class="type shadow">{{ filterName.type1 }}</div>
+                                        <div v-if=" filterName[index].type1 == 'fire'" class="type fire">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'poison'" class="type poison">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'normal'" class="type normal">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'fighting'" class="type fighting">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'flying'" class="type flying">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'ground'" class="type ground">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'rock'" class="type rock">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'bug'" class="type bug">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'ghost'" class="type ghost">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'steel'" class="type steel">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'water'" class="type water">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'grass'" class="type grass">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'electric'" class="type electric">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'psychic'" class="type psychic">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'ice'" class="type ice">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'dragon'" class="type dragon">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'dark'" class="type dark">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'fairy'" class="type fairy">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'unknown'" class="type unknown">{{ filterName[index].type1 }}</div>
+                                        <div v-else-if="filterName[index].type1 == 'shadow'" class="type shadow">{{ filterName[index].type1 }}</div>
 
-                                        <div v-if=" filterName.type2 == 'fire'" class="type fire">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'poison'" class="type poison">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'normal'" class="type normal">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'fighting'" class="type fighting">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'flying'" class="type flying">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'ground'" class="type ground">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'rock'" class="type rock">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'bug'" class="type bug">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'ghost'" class="type ghost">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'steel'" class="type steel">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'water'" class="type water">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'grass'" class="type grass">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'electric'" class="type electric">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'psychic'" class="type psychic">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'ice'" class="type ice">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'dragon'" class="type dragon">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'dark'" class="type dark">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'fairy'" class="type fairy">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'unknown'" class="type unknown">{{ filterName.type2 }}</div>
-                                        <div v-else-if="filterName.type2 == 'shadow'" class="type shadow">{{ filterName.type2 }}</div>
+                                        <div v-if=" filterName[index].type2 == 'fire'" class="type fire">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'poison'" class="type poison">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'normal'" class="type normal">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'fighting'" class="type fighting">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'flying'" class="type flying">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'ground'" class="type ground">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'rock'" class="type rock">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'bug'" class="type bug">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'ghost'" class="type ghost">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'steel'" class="type steel">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'water'" class="type water">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'grass'" class="type grass">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'electric'" class="type electric">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'psychic'" class="type psychic">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'ice'" class="type ice">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'dragon'" class="type dragon">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'dark'" class="type dark">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'fairy'" class="type fairy">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'unknown'" class="type unknown">{{ filterName[index].type2 }}</div>
+                                        <div v-else-if="filterName[index].type2 == 'shadow'" class="type shadow">{{ filterName[index].type2 }}</div>
                                     </div>
                                 </div>
                             </a>
