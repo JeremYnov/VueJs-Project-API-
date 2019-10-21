@@ -60,6 +60,18 @@ a{
 i{
     font-size: 20px;
 }
+.poke-filter-type{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.type-container{
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+}
+.type{
+    text-transform: capitalize;
+}
 
 .pokemon{
     border-radius: 30px;
