@@ -16,6 +16,10 @@ if (!isset($_GET["id"])) {
     <div class="poke-desc">
         <p>{{ infoPokemonSpecies.description }}</p>
     </div>
+    <div class="poke-categorie">
+        <p>{{ infoPokemonSpecies.categorie }}</p>
+    </div>
+
 
     <div class="poke-type">
         <div v-if=" infoPokemon.type1 == 'fire'" class="type fire">{{ infoPokemon.type1 }}</div>
