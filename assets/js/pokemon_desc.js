@@ -4,7 +4,8 @@ new Vue({
         id: "",
         infoPokemon: [],
         infoPokemonSpecies: [],
-        infoPokemonEvo: []
+        infoPokemonEvo: [],
+        typefilter: ["fire", "poison", "normal","fighting","flying","ground","rock","bug","ghost","steel","water","grass","electric","psychic","ice","dragon","dark","fairy","shadow"],
     },
 
 
