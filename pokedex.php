@@ -8,11 +8,7 @@
                 <div class="poke-filter-container">
                     <div class="searchbar">
                         <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar">
-<<<<<<< HEAD
                         <button v-on:click="filter(100000000000)" class="searchbar-button click"><img src="assets/icons/icons8-chercher-40.png" alt=""></button>
-=======
-                        <button v-on:click="filter()" class="searchbar-button click"><img src="assets/icons/icons8-chercher-40.png" alt=""></button>
->>>>>>> a3277c38ebf6082239bcd473fcda7e75c52f4d38
                     </div>
 
                     <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
@@ -30,7 +26,6 @@
                         </div>
                     </div>
 
-<<<<<<< HEAD
                     <select name="" id="">
                         <option value="">Ordre Alphabétique A-Z</option>
                         <option value="">Ordre Alphabétique Z-A</option>
@@ -47,8 +42,6 @@
 
 
                 </div>
-=======
->>>>>>> a3277c38ebf6082239bcd473fcda7e75c52f4d38
 
                 </div>
             </div>
@@ -61,7 +54,6 @@
                             <a v-bind:href="urlPokemon">
                                 <div class="poke-image">
                                     <img :src="infoPokemon[index].image" alt="">
-<<<<<<< HEAD
                                 </div>
                                 <div class="poke-infos">
                                     <div class="poke-id">
@@ -79,25 +71,6 @@
 
                                     </div>
                                 </div>
-=======
-                                </div>
-                                <div class="poke-infos">
-                                    <div class="poke-id">
-                                        <p v-if="index < 9">N°00{{ index + 1}}</p>
-                                        <p v-else-if="index < 99">N°0{{ index + 1}}</p>
-                                        <p v-else>N°{{ index + 1}}</p>
-                                    </div>
-                                    <div class="poke-name">
-                                        <p>{{ namePokemon[index] }}</p>
-                                    </div>
-                                    <div class="poke-type">
-                                        <div v-for="(todo, value) in typefilter">
-                                            <div v-if=" infoPokemon[index].type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon[index].type1 }} </div>
-                                            <div v-if=" infoPokemon[index].type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon[index].type2 }} </div>
-                                        </div>
-                                    </div>
-                                </div>
->>>>>>> a3277c38ebf6082239bcd473fcda7e75c52f4d38
                             </a>
                         </div>
                     </div>
@@ -121,13 +94,8 @@
                                     </div>
                                     <div class="poke-type">
                                         <div v-for="(todo, value) in typefilter">
-<<<<<<< HEAD
                                             <div v-if=" filterName[index].type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ filterName[index].type1 }} </div>
                                             <div v-if=" filterName[index].type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ filterName[index].type2 }} </div>
-=======
-                                            <div v-if=" infoPokemon[index].type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon[index].type1 }} </div>
-                                            <div v-if=" infoPokemon[index].type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon[index].type2 }} </div>
->>>>>>> a3277c38ebf6082239bcd473fcda7e75c52f4d38
                                         </div>
                                     </div>
                                 </div>
