@@ -6,7 +6,9 @@ if (!isset($_GET["id"])) {
 
 <section class="background">
     <div id="app">
+        <div class="poke-image">
         <img :src="infoPokemon.image" alt="">
+        </div>
         <div class="poke-id">
             <p>{{ infoPokemon.id }}</p>
         </div>
@@ -27,6 +29,7 @@ if (!isset($_GET["id"])) {
                 <p>{{ infoPokemon.poids }}</p>
             </div>
         </div>
+    </div>
 </section>
 
 

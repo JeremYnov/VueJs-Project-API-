@@ -13,18 +13,7 @@
 
                     <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
                     <button v-on:click="pokedex()" v-else>Afficher le pokedex entier</button>
-                    <select name="" id="">
-                        <option value="">Ordre Alphabétique A-Z</option>
-                        <option value="">Ordre Alphabétique Z-A</option>
-                        <option value="" selected>Numéro le plus bas en premier</option>
-                        <option value="">Numéro le plus haut en premier</option>
-                    </select>
 
-                    <div class="poke-filter-type">
-                        <div v-for="(todo, index) in typefilter" class="type-container">
-                            <div v-on:click="typefilter(index)" class="type click" v-bind:class="typefilter[index]"> {{ typefilter[index] }} </div>
-                        </div>
-                    </div>
 
                     <select name="" id="">
                         <option value="">Ordre Alphabétique A-Z</option>
@@ -32,19 +21,16 @@
                         <option value="" selected>Numéro le plus bas en premier</option>
                         <option value="">Numéro le plus haut en premier</option>
                     </select>
-
                     <div class="poke-filter-type">
                         <div v-for="(todo, index) in typefilter" class="type-container">
                             <div v-on:click="filter(index)" class="type click" v-bind:class="typefilter[index]"> {{ typefilter[index] }} </div>
                         </div>
-
                     </div>
 
-
                 </div>
 
-                </div>
             </div>
+
             <div class="poke-container">
 
                 <div v-if="FilterCheck == false">
@@ -105,6 +91,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <?php require_once("includes/footer.php") ?>

@@ -9,10 +9,6 @@
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
-<<<<<<< HEAD
-=======
-    <!-- <script src="https://kit.fontawesome.com/c3feb606cd.js" crossorigin="anonymous"></script> -->
->>>>>>> a3277c38ebf6082239bcd473fcda7e75c52f4d38
     <?php if($_SERVER["SCRIPT_NAME"] === "/Poke-projet/pokedex.php"): ?>
     <link rel="stylesheet" href="assets/css/pokedex.css">
     <script src="assets/js/pokedex.js" async></script>
