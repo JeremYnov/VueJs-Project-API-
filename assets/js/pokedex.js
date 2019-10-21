@@ -4,8 +4,7 @@ new Vue({
         urlPokemon: '',
         infoPokemon: [],
         namePokemon: [],
-        typefilter: ["fire", "poison", "normal","fighting","flying","ground","rock","bug","ghost","steel","water","grass","electric","psychic","ice","dragon","dark","fairy","shadow"],
-        filterType: false,
+        typefilter: ["fire", "poison", "normal","fighting","flying","ground","rock","bug","steel","water","grass","electric","psychic","ice","dragon","dark","fairy","shadow"],
         name: '',
         filterName: [],
         FilterCheck: false
@@ -47,7 +46,6 @@ new Vue({
                         })
                 }
             })
-
     },
 
 
@@ -60,12 +58,37 @@ new Vue({
             this.FilterCheck = false
         },
 
-        filter() {
+        filter(i) {
             this.filterName = []
             let validate = 0
             let info
             for (let index = 0; index < this.namePokemon.length; index++) {
-                if (this.namePokemon[index].indexOf(this.name) === 0 || this.infoPokemon[index].id == this.name) {
+
+                if(i != 100000000000){
+                    if(this.infoPokemon[index].type1 == this.typefilter[i] || this.infoPokemon[index].type2 == this.typefilter[i]){
+                        this.FilterCheck = true
+                        validate = 1
+                        if (this.infoPokemon[index].type2) {
+                            console.log("type2")
+                            info = {
+                                name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                                type1: this.infoPokemon[index].type1, type2: this.infoPokemon[index].type2
+                            }
+                        } else {
+                            console.log("type1")
+                            info = {
+                                name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                                type1: this.infoPokemon[index].type1
+                            }
+                        }
+                        console.log(info)
+                        this.filterName.push(info)
+                        
+                    } 
+                }
+                
+
+                else if (this.namePokemon[index].indexOf(this.name) === 0 || this.infoPokemon[index].id == this.name) {
                     this.FilterCheck = true
                     validate = 1
                     if (this.infoPokemon[index].type2) {
@@ -82,14 +105,12 @@ new Vue({
                     this.filterName.push(info)
                 }
             }
-            if (validate == 0 || this.name == "") {
+            if (validate == 0) {
                 this.FilterCheck = false
             }
         },
 
-        type(index) {
-            
-        }
+        
 
 
     }

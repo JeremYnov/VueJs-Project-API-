@@ -33,7 +33,12 @@ new Vue({
                 fetch(`https://pokeapi.co/api/v2/pokemon-species/${this.id}`)
                     .then(result => result.json())
                     .then(result => {
-                        this.infoPokemonSpecies = { name: result.names[6].name, description: result.flavor_text_entries[5].flavor_text + result.flavor_text_entries[29].flavor_text + result.flavor_text_entries[21].flavor_text, categorie:result.genera[6].genus}
+                        this.infoPokemonSpecies = { name: result.names[6].name, description: result.flavor_text_entries[5].flavor_text + result.flavor_text_entries[29].flavor_text + result.flavor_text_entries[21].flavor_text }
+                    })
+                fetch(`https://pokeapi.co/api/v2/evolution-chain/${this.id}`)
+                    .then(result => result.json())
+                    .then(result => {
+                        this.infoPokemonEvo = { name: result.names[6].name, description: result.flavor_text_entries[5].flavor_text + result.flavor_text_entries[29].flavor_text + result.flavor_text_entries[21].flavor_text }
                     })
                     
             })
