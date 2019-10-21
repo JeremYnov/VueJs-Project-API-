@@ -36,11 +36,20 @@ a{
     background: #f6f6f6;
     border-radius: 20px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-    padding: 20px 10px;
+    padding: 10px 10px;
     
+}
+.poke-logo-filter{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.poke-logo-filter img{
+    height: 80px;
 }
 .searchbar{
     display: flex;
+    padding:10px 0;
 }
 .poke-searchbar{
     border: 3px solid #e91d26;
@@ -48,6 +57,7 @@ a{
     width: 200px;
     border-radius: 50px 0 0 50px;
     padding: 0 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 .searchbar-button{
     border: 3px solid #e91d26;
@@ -57,23 +67,29 @@ a{
     border-radius: 0 50px 50px 0;
     padding: 0 12px;
     cursor: pointer;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 .searchbar-button img{
     height: 20px;
     width: 20px;
 }
+.poke-pokedex{
+    border: 3px solid #e91d26;
+    height: 40px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 0 10px;
+    background: white;
+    font-family: 'Righteous', cursive;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    margin : 10px 0;
+    transition: 0.6s;
+}
 input[type="text"]:focus {
-<<<<<<< HEAD
     outline:none;
 }
 select:focus {
     outline:none;
-=======
-	outline:none;
-}
-select:focus {
-	outline:none;
->>>>>>> a3277c38ebf6082239bcd473fcda7e75c52f4d38
 }
 button:focus{
     outline: none;
@@ -154,4 +170,9 @@ button:focus{
 
 .click{
     cursor: pointer;
+}
+
+.poke-pokedex:hover{
+    background:#e91d26;
+    color: white;
 }

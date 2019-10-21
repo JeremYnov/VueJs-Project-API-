@@ -4,15 +4,20 @@
 <section class="background">
     <div id="pokedex">
         <div class="pokedex-content-container">
+
             <div id="filter" class="poke-filter">
                 <div class="poke-filter-container">
+                    <div class="poke-logo-filter">
+                        <img src="assets/icons/icon-pokeball.png" alt="">
+                    </div>
                     <div class="searchbar">
                         <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar">
                         <button v-on:click="filter(100000000000)" class="searchbar-button click"><img src="assets/icons/icons8-chercher-40.png" alt=""></button>
                     </div>
 
                     <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
-                    <button v-on:click="pokedex()" v-else>Afficher le pokedex entier</button>
+                   
+                    <button v-on:click="pokedex()" v-else class="poke-pokedex click">Afficher le pokedex entier</button>
 
 
                     <select name="" id="">
