@@ -8,16 +8,17 @@
                 <div class="poke-filter-container">
                     <div class="searchbar">
                         <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar">
-                        <button v-on:click="filter()" class="searchbar-button click"><i class="fas fa-search"></i></button>
+                        <button v-on:click="filter()" class="searchbar-button click"><img src="assets/icons/icons8-chercher-40.png" alt=""></button>
                     </div>
 
                     <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
                     <button v-on:click="pokedex()" v-else>Afficher le pokedex entier</button>
-
-                    <button class="click">A->Z</button>
-                    <button class="click">Z->A</button>
-                    <button class="click">1-></button>
-                    <button class="click">1</button>
+                    <select name="" id="">
+                        <option value="">Ordre Alphabétique A-Z</option>
+                        <option value="">Ordre Alphabétique A-Z</option>
+                        <option value="" selected>Numéro le plus bas en premier</option>
+                        <option value="">Numéro le plus haut en premier</option>
+                    </select>
 
                     <div class="poke-filter-type">
                         <div v-for="(todo, index) in typefilter" class="type-container">
