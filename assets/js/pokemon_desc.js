@@ -2,7 +2,9 @@ new Vue({
     el: '#app',
     data: {
         id: "",
-        infoPokemon: []
+        infoPokemon: [],
+        infoPokemonSpecies: [],
+        infoPokemonEvo: []
     },
 
 
@@ -15,7 +17,29 @@ new Vue({
         fetch(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
             .then(result => result.json())
             .then(result => {
-                this.infoPokemon = {name: result.name}
+                if (result.types[1]) {
+                    this.infoPokemon = {
+                        id: result.id, image: result.sprites.front_default,
+                        type1: result.types[0].type.name, type2: result.types[1].type.name,
+                        taille: result.height, poids: result.weight,
+                    }
+                } else {
+                    this.infoPokemon = {
+                        id: result.id, image: result.sprites.front_default,
+                        type1: result.types[0].type.name
+                    }
+                }
+                fetch(`https://pokeapi.co/api/v2/pokemon-species/${this.id}`)
+                    .then(result => result.json())
+                    .then(result => {
+                        this.infoPokemonSpecies = { name: result.names[6].name, description: result.flavor_text_entries[5].flavor_text + result.flavor_text_entries[29].flavor_text + result.flavor_text_entries[21].flavor_text }
+                    })
+                fetch(`https://pokeapi.co/api/v2/evolution-chain/${this.id}`)
+                    .then(result => result.json())
+                    .then(result => {
+                        this.infoPokemonEvo = { name: result.names[6].name, description: result.flavor_text_entries[5].flavor_text + result.flavor_text_entries[29].flavor_text + result.flavor_text_entries[21].flavor_text }
+                    })
+                    
             })
     },
 

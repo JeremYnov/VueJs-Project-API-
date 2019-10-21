@@ -11,7 +11,7 @@
                             <button v-on:click="filter()" class="searchbar-button"><i class="fas fa-search"></i></button>
                     </div>
 
-                    <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
+                    <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la première lettre)</p>
                     <button v-on:click="pokedex()" v-else>Afficher le pokedex entier</button>
 
                 </div>

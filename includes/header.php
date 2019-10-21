@@ -15,6 +15,7 @@
     <script src="assets/js/pokedex.js" async></script>
     <title>Pokédex</title>
     <?php elseif($_SERVER["SCRIPT_NAME"] === "/Poke-projet/pokemon_desc.php"): ?>
+    <link rel="stylesheet" href="assets/css/pokemon_desc.css">
     <script src="assets/js/pokemon_desc.js" async></script>
     <script src="assets/js/title.js" async></script>
     <div id="title">

@@ -1,0 +1,34 @@
+body{
+    font-family: 'Righteous', cursive;
+}
+.poke-type{
+    display: flex;
+    text-transform: capitalize;
+}
+.type{
+    padding: 8px;
+    background: yellow;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 110px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5)
+}
+.normal{background:#a7a99d ;}
+.grass{background: #79b05f;}
+.poison{background:#a46a94;}
+.psychic{background:#e473a1;}
+.ground{background:#cfb063;}
+.ice{background:#7dc9e9;}
+.fire{background:#e7624f;}
+.rock{background:#b5a66f;}
+.dragon{background:#827bdc;}
+.water{background:#4c9be8;}
+.bug{background:#acb14a;}
+.fighting{background:#aa664e;}
+.shadow{background:#7578bb;}
+.flying{background:#6f95e3;}
+.electric{background:#e9c15e;}
+.steel{background:#abadba;}
+.dark{background:#8a6b57;}
+.fairy{background:#daa6d7;}
