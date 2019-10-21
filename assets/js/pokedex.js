@@ -4,6 +4,8 @@ new Vue({
         urlPokemon: '',
         infoPokemon: [],
         namePokemon: [],
+        typefilter: ["fire", "poison", "normal","fighting","flying","ground","rock","bug","ghost","steel","water","grass","electric","psychic","ice","dragon","dark","fairy","shadow"],
+        filterType: false,
         name: '',
         filterName: [],
         FilterCheck: false
@@ -84,6 +86,10 @@ new Vue({
                 this.FilterCheck = false
             }
         },
+
+        type(index) {
+            
+        }
 
 
     }

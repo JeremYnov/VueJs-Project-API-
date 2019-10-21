@@ -11,34 +11,18 @@
                         <button v-on:click="filter()" class="searchbar-button click"><i class="fas fa-search"></i></button>
                     </div>
 
-                    <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la première lettre)</p>
+                    <p v-if="FilterCheck == false">Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
                     <button v-on:click="pokedex()" v-else>Afficher le pokedex entier</button>
 
                     <button class="click">A->Z</button>
                     <button class="click">Z->A</button>
                     <button class="click">1-></button>
                     <button class="click"><-1</button> 
-                <div class="type fire click">fire</div>
-                <div class="type poison click">poison</div>
-                <div class="type normal click">normal</div>
-                <div class="type fighting click">fighting</div>
-                <div class="type flying click">flying</div>
-                <div class="type ground click">ground</div>
-                <div class="type rock click">rock</div>
-                <div class="type bug click">bug</div>
-                <div class="type ghost click">ghost</div>
-                <div class="type steel click">steel</div>
-                <div class="type water click">water</div>
-                <div class="type grass click">grass</div>
-                <div class="type electric click">electric</div>
-                <div class="type psychic click">psychic</div>
-                <div class="type ice click">ice</div>
-                <div class="type dragon click">dragon</div>
-                <div class="type dark click">dark</div>
-                <div class="type fairy click">fairy</div>
-                <div class="type shadow click">shadow</div>
-
-            </div>
+                    <div v-for="(todo, index) in typefilter">
+                <div v-on:click="typefilter(index)" class="type click" v-bind:class="typefilter[index]"> {{ typefilter[index] }} </div>
+                </div>
+                
+                </div>
         </div>
         <div class="poke-container">
 
@@ -60,7 +44,11 @@
                                     <p>{{ namePokemon[index] }}</p>
                                 </div>
                                 <div class="poke-type">
-                                    <div v-if=" infoPokemon[index].type1 == 'fire'" class="type fire">{{ infoPokemon[index].type1 }}</div>
+                                <div v-for="(todo, value) in typefilter">
+                                    <div v-if=" infoPokemon[index].type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon[index].type1 }} </div>
+                                    <div v-if=" infoPokemon[index].type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon[index].type2 }} </div>
+                                </div>
+                                    <!-- <div v-if=" infoPokemon[index].type1 == 'fire'" class="type fire">{{ infoPokemon[index].type1 }}</div>
                                     <div v-else-if="infoPokemon[index].type1 == 'poison'" class="type poison">{{ infoPokemon[index].type1 }}</div>
                                     <div v-else-if="infoPokemon[index].type1 == 'normal'" class="type normal">{{ infoPokemon[index].type1 }}</div>
                                     <div v-else-if="infoPokemon[index].type1 == 'fighting'" class="type fighting">{{ infoPokemon[index].type1 }}</div>
@@ -100,7 +88,7 @@
                                     <div v-else-if="infoPokemon[index].type2 == 'dark'" class="type dark">{{ infoPokemon[index].type2 }}</div>
                                     <div v-else-if="infoPokemon[index].type2 == 'fairy'" class="type fairy">{{ infoPokemon[index].type2 }}</div>
                                     <div v-else-if="infoPokemon[index].type2 == 'unknown'" class="type unknown">{{ infoPokemon[index].type2 }}</div>
-                                    <div v-else-if="infoPokemon[index].type2 == 'shadow'" class="type shadow">{{ infoPokemon[index].type2 }}</div>
+                                    <div v-else-if="infoPokemon[index].type2 == 'shadow'" class="type shadow">{{ infoPokemon[index].type2 }}</div> -->
                                 </div>
                             </div>
                         </a>
