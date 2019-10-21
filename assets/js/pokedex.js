@@ -80,7 +80,7 @@ new Vue({
                     this.filterName.push(info)
                 }
             }
-            if (validate == 0) {
+            if (validate == 0 || this.name == "") {
                 this.FilterCheck = false
             }
         },
