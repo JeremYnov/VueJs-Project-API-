@@ -15,7 +15,7 @@
                     <button v-on:click="pokedex()" v-else>Afficher le pokedex entier</button>
                     <select name="" id="">
                         <option value="">Ordre Alphabétique A-Z</option>
-                        <option value="">Ordre Alphabétique A-Z</option>
+                        <option value="">Ordre Alphabétique Z-A</option>
                         <option value="" selected>Numéro le plus bas en premier</option>
                         <option value="">Numéro le plus haut en premier</option>
                     </select>
