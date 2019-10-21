@@ -123,3 +123,6 @@ i{
 .dark{background:#8a6b57;}
 .fairy{background:#daa6d7;}
 
+.click{
+    cursor: pointer;
+}
