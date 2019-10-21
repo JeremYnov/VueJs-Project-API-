@@ -54,7 +54,7 @@ new Vue({
             this.urlPokemon = `http://localhost/Poke-projet/pokemon_desc.php?id=${index}`
         },
 
-        pokedex(){
+        pokedex() {
             this.FilterCheck = false
         },
 
@@ -63,25 +63,29 @@ new Vue({
             let validate = 0
             let info
             for (let index = 0; index < this.namePokemon.length; index++) {
-                if (this.namePokemon[index].indexOf(this.name) === 0) {
+                if (this.namePokemon[index].indexOf(this.name) === 0 || this.infoPokemon[index].id == this.name) {
                     this.FilterCheck = true
                     validate = 1
-                    if(this.infoPokemon[index].type2){
-                        info = {name: this.namePokemon[index], id:  this.infoPokemon[index].id, image:  this.infoPokemon[index].image,
-                            type1:  this.infoPokemon[index].type1, type2:  this.infoPokemon[index].type2}
-                    } else{
-                        info = {name: this.namePokemon[index], id:  this.infoPokemon[index].id, image:  this.infoPokemon[index].image,
-                            type1:  this.infoPokemon[index].type1}
+                    if (this.infoPokemon[index].type2) {
+                        info = {
+                            name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                            type1: this.infoPokemon[index].type1, type2: this.infoPokemon[index].type2
+                        }
+                    } else {
+                        info = {
+                            name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                            type1: this.infoPokemon[index].type1
+                        }
                     }
                     this.filterName.push(info)
                 }
             }
-            if(validate == 0){
-                this.FilterCheck = false  
+            if (validate == 0) {
+                this.FilterCheck = false
             }
         },
 
-        
+
     }
 
 })
