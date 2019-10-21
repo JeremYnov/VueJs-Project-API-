@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
-    <script src="https://kit.fontawesome.com/c3feb606cd.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/c3feb606cd.js" crossorigin="anonymous"></script> -->
     <?php if($_SERVER["SCRIPT_NAME"] === "/Poke-projet/pokedex.php"): ?>
     <link rel="stylesheet" href="assets/css/pokedex.css">
     <script src="assets/js/pokedex.js" async></script>

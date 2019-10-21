@@ -1,3 +1,4 @@
+
 body{
     font-family: 'Righteous', cursive;
 }
@@ -57,8 +58,30 @@ a{
     padding: 0 12px;
     cursor: pointer;
 }
-i{
-    font-size: 20px;
+.searchbar-button img{
+    height: 20px;
+    width: 20px;
+}
+input[type="text"]:focus {
+	outline:none;
+}
+select:focus {
+	outline:none;
+}
+button:focus{
+    outline: none;
+}
+.poke-filter-type{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.type-container{
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+}
+.type{
+    text-transform: capitalize;
 }
 
 .pokemon{
