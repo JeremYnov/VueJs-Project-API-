@@ -1,3 +1,4 @@
+
 body{
     font-family: 'Righteous', cursive;
 }
@@ -62,10 +63,17 @@ a{
     width: 20px;
 }
 input[type="text"]:focus {
+<<<<<<< HEAD
     outline:none;
 }
 select:focus {
     outline:none;
+=======
+	outline:none;
+}
+select:focus {
+	outline:none;
+>>>>>>> a3277c38ebf6082239bcd473fcda7e75c52f4d38
 }
 button:focus{
     outline: none;

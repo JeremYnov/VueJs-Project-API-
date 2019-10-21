@@ -35,6 +35,10 @@ new Vue({
                     .then(result => {
                         this.infoPokemonSpecies = { name: result.names[6].name, description: result.flavor_text_entries[5].flavor_text + result.flavor_text_entries[29].flavor_text + result.flavor_text_entries[21].flavor_text }
                     })
+<<<<<<< HEAD
+=======
+                    
+>>>>>>> a3277c38ebf6082239bcd473fcda7e75c52f4d38
             })
     },
 
