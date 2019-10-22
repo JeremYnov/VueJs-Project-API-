@@ -84,10 +84,10 @@
                                         <p>{{ filterName[index].name }}</p>
                                     </div>
                                     <div class="poke-type">
-                                        <div v-for="(todo, value) in typefilter">
-                                            <div v-if=" filterName[index].type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ filterName[index].type1 }} </div>
-                                            <div v-if=" filterName[index].type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ filterName[index].type2 }} </div>
-                                        </div>
+                                        
+                                            <div v-for="(todo, value) in typefilter" v-if=" filterName[index].type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ filterName[index].type1 }} </div>
+                                            <div v-for="(todo, value) in typefilter" v-if=" filterName[index].type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ filterName[index].type2 }} </div>
+                                       
                                     </div>
                                 </div>
                             </a>
