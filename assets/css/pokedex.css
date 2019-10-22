@@ -118,6 +118,29 @@ button:focus{
     margin : 10px 0;
     transition: 0.6s;
 }
+.item-page{
+    margin : 10px 0;
+    display: flex;
+    justify-content: center;
+}
+.item-page-button{
+    height: 40px;
+    /* width: 100%; */
+    border-radius: 10px;
+    padding: 8px;
+    background: #e91d26;
+    color: white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: 0.6s;
+    display: flex;
+    align-items: center;
+}
+.item-page-button img{
+    height: 40px;
+    width: 40px;
+    padding-right: 5px;
+}
 
 
 

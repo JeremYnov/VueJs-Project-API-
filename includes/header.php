@@ -20,6 +20,10 @@
     <div id="title">
     <title>{{ namePokemon[0] }}</title>
     </div>
+    <?php elseif($_SERVER["SCRIPT_NAME"] === "/Poke-projet/pokemon_item.php"): ?>
+    <link rel="stylesheet" href="assets/css/pokemon_item.css">
+    <script src="assets/js/pokemon_item.js" async></script>
+    <title>Items</title>
     <?php endif ?>
 </head>
 

@@ -1,6 +1,4 @@
-<?php include("includes/header.php");
-
-?>
+<?php include("includes/header.php");?>
 <section class="background">
     <div id="pokedex">
         <div class="pokedex-content-container">
@@ -31,6 +29,9 @@
                         <div v-for="(todo, index) in typefilter" class="type-container">
                             <div v-on:click="filter(index)" class="type click" v-bind:class="typefilter[index]"> {{ typefilter[index] }} </div>
                         </div>
+                    </div>
+                    <div class="item-page">
+                        <a href="pokemon_item.php" class="item-page-button"><img src="assets/icons/icons8-pokebag-50.png" alt=""> Voir les items</a>
                     </div>
 
                 </div>
