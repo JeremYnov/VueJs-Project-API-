@@ -22,21 +22,26 @@ new Vue({
                     this.infoPokemon = {
                         id: result.id, image: result.sprites.front_default,
                         type1: result.types[0].type.name, type2: result.types[1].type.name,
+                        taille: result.height, poids: result.weight,
                     }
                 } else {
                     this.infoPokemon = {
                         id: result.id, image: result.sprites.front_default,
                         type1: result.types[0].type.name,
+                        taille: result.height, poids: result.weight,
                     }
                 }
                 fetch(`https://pokeapi.co/api/v2/pokemon-species/${this.id}`)
                     .then(result => result.json())
                     .then(result => {
-                        this.infoPokemonSpecies = {
-                            name: result.names[6].name,
-                            description: result.flavor_text_entries[5].flavor_text + result.flavor_text_entries[29].flavor_text + result.flavor_text_entries[21].flavor_text,
-                            categorie: result.genera[6].genus
+                        indextable =[]
+                        for (let index = 0; index < result.flavor_text_entries.length; index++) {
+                            if(result.flavor_text_entries[index].language.name == "fr"){
+                                indextable.push(index)
+                            } 
                         }
+                        
+                        this.infoPokemonSpecies = { name: result.names[6].name, description: result.flavor_text_entries[indextable[0]].flavor_text + " " + result.flavor_text_entries[indextable[1]].flavor_text + " " + result.flavor_text_entries[indextable[2]].flavor_text, categorie: result.genera[6].genus }
                     })
             })
     },
