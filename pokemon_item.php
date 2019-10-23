@@ -30,30 +30,32 @@
                             <div v-on:click="filter(index)" class="type click" v-bind:class="typefilter[index]"> {{ typefilter[index] }} </div>
                         </div>
                     </div> -->
+                    <div class="item-page">
+                        <a href="pokedex.php" class="item-page-button"><img src="assets/icons/icons8-pokédex-50.png" alt="">Pokédex</a>
+                    </div>
                 </div>
             </div>
 
             <div class="item-container">
-
                 <!-- <div v-if="FilterCheck == false"> -->
-                    <div class="item-wrapper">
-                        <div v-on:click="url(infoItem[index].id)" v-for="(todo, index) in infoItem" class="item">
-                                <div class="item-image">
-                                    <img :src="infoItem[index].image" alt="">
-                                </div>
-                                <div class="item-infos">
-                                    <div class="item-id">
-                                        <p v-if="index < 9">N°00{{ index + 1}}</p>
-                                        <p v-else-if="index < 99">N°0{{ index + 1}}</p>
-                                        <p v-else>N°{{ index + 1}}</p>
-                                    </div>
-                                    <div class="item-name">
-                                        <p>{{ infoItem[index].name }}</p>
-                                    </div>
-                                </div>
-                            </a>
+                <div class="item-wrapper">
+                    <div v-on:click="url(infoItem[index].id)" v-for="(todo, index) in infoItem" class="item">
+                        <div class="item-image">
+                            <img :src="infoItem[index].image" alt="">
                         </div>
+                        <div class="item-infos">
+                            <div class="item-id">
+                                <p v-if="index < 9">N°00{{ index + 1}}</p>
+                                <p v-else-if="index < 99">N°0{{ index + 1}}</p>
+                                <p v-else>N°{{ index + 1}}</p>
+                            </div>
+                            <div class="item-name">
+                                <p>{{ infoItem[index].name }}</p>
+                            </div>
+                        </div>
+                        </a>
                     </div>
+                </div>
                 <!-- </div> -->
 
                 <!-- <div v-if="FilterCheck == true">

@@ -1,13 +1,55 @@
 body{
     font-family: 'Righteous', cursive;
 }
+.poke-desc-content-container{
+    display: flex;
+    justify-content: center;
+}
+.poke-desc-container{
+    padding: 5.5rem 1.5rem 0 0;
+    max-width: 70%;
+}
+.poke-desc{
+    background: #f6f6f6;
+    border-radius:20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-column-gap: 1.5rem;
+}
+.poke-image img{
+    width: 100%;
+    background: #e7e7e7;
+    border-radius: 20px;
+}
+.poke-id-name{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5%;
+}
+.poke-id{
+    color: grey;
+    font-size: 30px;
+    padding-right: 10px;
+}
+.poke-name{
+    color: #3b3b3b;
+    font-size: 30px;
+}
+.poke-description{
+    font-size: 18px;
+}
+
+
+
+
 .poke-type{
     display: flex;
     text-transform: capitalize;
 }
 .type{
     padding: 8px;
-    background: yellow;
     text-align: center;
     border-radius: 10px;
     font-size: 15px;
