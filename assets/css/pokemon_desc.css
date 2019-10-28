@@ -1,7 +1,13 @@
 body{
     font-family: 'Righteous', cursive;
 }
-.poke-desc-content-container{
+.capitalize{
+    text-transform: capitalize;
+}
+.text-center{
+    text-align: center;
+}
+.center{
     display: flex;
     justify-content: center;
 }
@@ -24,8 +30,6 @@ body{
     border-radius: 20px;
 }
 .poke-id-name{
-    display: flex;
-    justify-content: center;
     padding-bottom: 5%;
 }
 .poke-id{
@@ -42,11 +46,18 @@ body{
 }
 
 
-
-
-.poke-type{
+.poke-weak-strength-wrapper{
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    grid-column-gap: 1.5rem;
+}
+.weaknesses,.strengths{
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    grid-gap: 0.5rem;
+}
+.types{
     display: flex;
-    text-transform: capitalize;
 }
 .type{
     padding: 8px;
