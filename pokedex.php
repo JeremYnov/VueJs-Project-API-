@@ -9,7 +9,7 @@ if (!isset($_GET["page"])) {
 
             <div id="filter" class="poke-filter">
                 <div class="poke-filter-container">
-                    <div class="poke-logo-filter">
+                    <div class="poke-logo-filter center">
                         <img src="assets/icons/icon-pokeball.png" alt="">
                     </div>
 
@@ -36,14 +36,14 @@ if (!isset($_GET["page"])) {
                             <option value="3">Numéro le plus bas en premier</option>
                             <option value="4">Numéro le plus haut en premier</option>
                         </select>
-                        <button v-on:click="trie_pokemon(infoPokemon,filterName)"> Valider </button>
+                        <button v-on:click="trie_pokemon(infoPokemon,filterName)" class="poke-select-button"> Valider </button>
                     </div>
                     <div class="poke-filter-type">
-                        <div v-for="(todo, index) in typefilter" class="type-container">
+                        <div v-for="(todo, index) in typefilter" class="type-container center">
                             <div v-on:click="filter(index)" class="type click" v-bind:class="typefilter[index]"> {{ typefilter[index] }} </div>
                         </div>
                     </div>
-                    <div class="item-page">
+                    <div class="item-page center">
                         <a href="pokemon_item.php" class="item-page-button"><img src="assets/icons/icons8-pokebag-50.png" alt=""> Voir les items</a>
                     </div>
 
@@ -69,10 +69,15 @@ if (!isset($_GET["page"])) {
                                         <p v-else-if="value.id < 100">N°0{{ value.id}}</p>
                                         <p v-else>N°{{ value.id + 1}}</p>
                                     </div>
+<<<<<<< HEAD
                                     <div class="poke-name">
                                         <p>{{ value.name }}</p>
+=======
+                                    <div class="poke-name capitalize">
+                                        <p>{{ infoPokemon[index].name }}</p>
+>>>>>>> 0a480dc2ce8d495562f0aa7d201be533a56d73a0
                                     </div>
-                                    <div class="poke-type">
+                                    <div class="poke-type capitalize">
 
                                         <div v-for="(todo, value) in typefilter" v-if=" value.type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ value.type1 }} </div>
                                         <div v-for="(todo, value) in typefilter" v-if=" value.type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ value.type2 }} </div>

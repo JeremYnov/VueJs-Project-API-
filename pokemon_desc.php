@@ -66,12 +66,12 @@ if (!isset($_GET["id"])) {
                         </div>
                     </div>
 
-                    <p v-if="infoPokemon.taille < 9">Taille: 0.{{ infoPokemon.taille}} m</p>
-                    <p v-else-if="infoPokemon.taille < 99">Taille: {{ infoPokemon.id}} m</p>
+                    <p v-if="infoPokemon.taille <= 9">Taille: 0.{{ infoPokemon.taille }} m</p>
+                    <p v-else-if="infoPokemon.taille <= 99">Taille: {{ infoPokemon.id }} m</p>
                     <p v-else>Taille: {{ infoPokemon.taille}} m</p>
 
-                    <p v-if="infoPokemon.poids < 9">Poids: 0.{{ infoPokemon.poids}} kg</p>
-                    <p v-else-if="infoPokemon.poids < 99">Poids: {{ infoPokemon.poids }} kg</p>
+                    <p v-if="infoPokemon.poids <= 9">Poids: 0.{{ infoPokemon.poids }} kg</p>
+                    <p v-else-if="infoPokemon.poids <= 99">Poids: {{ infoPokemon.poids }} kg</p>
                     <p v-else>Poids: {{ infoPokemon.poids}} kg</p>
 
 
