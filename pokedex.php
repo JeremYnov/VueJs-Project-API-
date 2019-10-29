@@ -1,4 +1,8 @@
-<?php include("includes/header.php");?>
+<?php include("includes/header.php");
+if (!isset($_GET["page"])) {
+    header("location: index.php");
+}
+?>
 <section class="background">
     <div id="pokedex">
         <div class="pokedex-content-container">
@@ -8,6 +12,14 @@
                     <div class="poke-logo-filter">
                         <img src="assets/icons/icon-pokeball.png" alt="">
                     </div>
+
+                    <div v-if="page < 4">
+                        <button class="page" v-for="n in 5" v-on:click="page_filter(n)"> {{ n }} </button>
+                    </div>
+                    <div v-else>
+                        <button class="page" v-for="n in (page + 2)" v-if="n >= (page - 2)" v-on:click="page_filter(n)"> {{ n }} </button>
+                    </div>
+
                     <div class="searchbar">
                         <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar">
                         <button v-on:click="filter(100000000000)" class="searchbar-button click"><img src="assets/icons/icons8-chercher-40.png" alt=""></button>
@@ -39,29 +51,31 @@
 
             </div>
 
+
+
             <div class="poke-container">
 
                 <div v-if="FilterCheck == false">
                     <div class="poke-wrapper">
-                        <div v-on:click="url(infoPokemon[index].id)" v-for="(todo, index) in infoPokemon" class="pokemon">
+                        <div v-on:click="url(value.id)" v-for="value in filterPage" class="pokemon">
 
                             <a v-bind:href="urlPokemon">
                                 <div class="poke-image">
-                                    <img :src="infoPokemon[index].image" alt="">
+                                    <img :src="value.image" alt="">
                                 </div>
                                 <div class="poke-infos">
                                     <div class="poke-id">
-                                        <p v-if="index < 9">N°00{{ index + 1}}</p>
-                                        <p v-else-if="index < 100">N°0{{ index + 1}}</p>
-                                        <p v-else>N°{{ index + 1}}</p>
+                                        <p v-if="value.id < 9">N°00{{ value.id}}</p>
+                                        <p v-else-if="value.id < 100">N°0{{ value.id}}</p>
+                                        <p v-else>N°{{ value.id + 1}}</p>
                                     </div>
                                     <div class="poke-name">
-                                        <p>{{ infoPokemon[index].name }}</p>
+                                        <p>{{ value.name }}</p>
                                     </div>
                                     <div class="poke-type">
 
-                                        <div v-for="(todo, value) in typefilter" v-if=" infoPokemon[index].type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon[index].type1 }} </div>
-                                        <div v-for="(todo, value) in typefilter" v-if=" infoPokemon[index].type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon[index].type2 }} </div>
+                                        <div v-for="(todo, value) in typefilter" v-if=" value.type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ value.type1 }} </div>
+                                        <div v-for="(todo, value) in typefilter" v-if=" value.type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ value.type2 }} </div>
 
                                     </div>
                                 </div>

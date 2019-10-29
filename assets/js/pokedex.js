@@ -8,12 +8,18 @@ new Vue({
         name: '',
         filterName: [],
         FilterCheck: false,
-        trie: ""
+        trie: "",
+        page: "",
+        filterPage: []
     },
 
 
     mounted: function () {
-        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100')
+        this.page = window.location.href
+        this.page = this.page.split("=")
+        this.page = this.page[1]
+        this.page = Number(this.page)
+        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964')
             .then(response => response.json())
             .then(json => {
                 for (let index = 1; index < json.results.length; index++) {
@@ -37,15 +43,19 @@ new Vue({
                             }
                             // this.infoPokemon[result.id] = pokemon
                             this.infoPokemon.push(pokemon)
+                            if (index >= (20 * (this.page - 1)) && index <= ((20 * (this.page - 1)) + 20)){
+                                this.filterPage.push(pokemon) 
+                            }
                         })
-                    // fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
-                    //     .then(result => result.json())
-                    //     .then(result => {
-                    //         pokemon = result.names[6].name
-                    //         this.namePokemon.push(pokemon)
-                    //     })
+                    fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
+                        .then(result => result.json())
+                        .then(result => {
+                            pokemon = result.names[6].name
+                            this.namePokemon.push(pokemon)
+                        })
                 }
             })
+        console.log(this.filterPage)
     },
 
 
@@ -69,19 +79,16 @@ new Vue({
                         this.FilterCheck = true
                         validate = 1
                         if (this.infoPokemon[index].type2) {
-                            console.log("type2")
                             info = {
                                 name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
                                 type1: this.infoPokemon[index].type1, type2: this.infoPokemon[index].type2
                             }
                         } else {
-                            console.log("type1")
                             info = {
                                 name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
                                 type1: this.infoPokemon[index].type1
                             }
                         }
-                        console.log(info)
                         this.filterName.push(info)
 
                     }
@@ -168,6 +175,10 @@ new Vue({
                 console.log(element.id)
             });
             // console.log(liste_destination)
+        },
+
+        page_filter(index) {
+            window.location.replace(`pokedex.php?page=${index}`);
         }
 
 
