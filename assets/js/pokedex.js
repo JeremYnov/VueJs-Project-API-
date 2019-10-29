@@ -133,7 +133,7 @@ new Vue({
                 } else {
                     this.FilterCheck = false
                     for (let i = 0; i < liste.length; i++) {
-                        liste_destination[i] = liste[98 - i]
+                        liste_destination[i] = liste[(liste.length - 1) - i]
                     }
                     this.FilterCheck = true
                 }
@@ -152,22 +152,22 @@ new Vue({
                 }
                 if (this.trie == 2) {
                     this.FilterCheck = true
-                    console.log(this.trie)
                     for (let i = 0; i < liste.length; i++) {
                         liste_destination[i] = liste[i]
                     }
                     this.FilterCheck = false
                 } else {
-                    console.log(this.trie)
                     this.FilterCheck = false
                     for (let i = 0; i < liste.length; i++) {
-                        liste_destination[i] = liste[98 - i]
+                        liste_destination[i] = liste[(liste.length - 1) - i]
                     }
                     this.FilterCheck = true
                 }
             }
-
-            console.log(liste_destination)
+            liste_destination.forEach(element => {
+                console.log(element.id)
+            });
+            // console.log(liste_destination)
         }
 
 
