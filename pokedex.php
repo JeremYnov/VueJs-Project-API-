@@ -18,12 +18,13 @@
                     <button v-on:click="pokedex()" v-else class="poke-pokedex click">Afficher le pokedex entier</button>
 
                     <div class="poke-select">
-                        <select name="" id="">
-                            <option value="">Ordre Alphabétique A-Z</option>
-                            <option value="">Ordre Alphabétique Z-A</option>
-                            <option value="" selected>Numéro le plus bas en premier</option>
-                            <option value="">Numéro le plus haut en premier</option>
+                        <select v-model="trie">
+                            <option value="1">Ordre Alphabétique A-Z</option>
+                            <option value="2">Ordre Alphabétique Z-A</option>
+                            <option value="3">Numéro le plus bas en premier</option>
+                            <option value="4">Numéro le plus haut en premier</option>
                         </select>
+                        <button v-on:click="trie_pokemon(infoPokemon,filterName)"> Valider </button>
                     </div>
                     <div class="poke-filter-type">
                         <div v-for="(todo, index) in typefilter" class="type-container">
@@ -51,11 +52,11 @@
                                 <div class="poke-infos">
                                     <div class="poke-id">
                                         <p v-if="index < 9">N°00{{ index + 1}}</p>
-                                        <p v-else-if="index < 99">N°0{{ index + 1}}</p>
+                                        <p v-else-if="index < 100">N°0{{ index + 1}}</p>
                                         <p v-else>N°{{ index + 1}}</p>
                                     </div>
                                     <div class="poke-name">
-                                        <p>{{ namePokemon[index] }}</p>
+                                        <p>{{ infoPokemon[index].name }}</p>
                                     </div>
                                     <div class="poke-type">
 
@@ -79,7 +80,7 @@
                                 <div class="poke-infos">
                                     <div class="poke-id">
                                         <p v-if="filterName[index].id < 9">N°00{{ filterName[index].id }}</p>
-                                        <p v-else-if="filterName[index].id < 99">N°0{{ filterName[index].id }}</p>
+                                        <p v-else-if="filterName[index].id < 100">N°0{{ filterName[index].id }}</p>
                                         <p v-else>N°{{ filterName[index].id }}</p>
                                     </div>
                                     <div class="poke-name">

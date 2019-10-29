@@ -4,10 +4,11 @@ new Vue({
         urlPokemon: '',
         infoPokemon: [],
         namePokemon: [],
-        typefilter: ["fire", "poison", "normal","fighting","flying","ground","rock","bug","steel","water","grass","electric","psychic","ice","dragon","dark","fairy","shadow"],
+        typefilter: ["fire", "poison", "normal", "fighting", "flying", "ground", "rock", "bug", "steel", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "shadow"],
         name: '',
         filterName: [],
-        FilterCheck: false
+        FilterCheck: false,
+        trie: ""
     },
 
 
@@ -25,25 +26,24 @@ new Vue({
                             let pokemon
                             if (result.types[1]) {
                                 pokemon = {
-                                    id: result.id, image: result.sprites.front_default,
+                                    id: result.id, name: result.name, image: result.sprites.front_default,
                                     type1: result.types[0].type.name, type2: result.types[1].type.name
                                 }
                             } else {
                                 pokemon = {
-                                    id: result.id, image: result.sprites.front_default,
+                                    id: result.id, name: result.name, image: result.sprites.front_default,
                                     type1: result.types[0].type.name
                                 }
                             }
                             // this.infoPokemon[result.id] = pokemon
                             this.infoPokemon.push(pokemon)
-
                         })
-                    fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
-                        .then(result => result.json())
-                        .then(result => {
-                            pokemon = result.names[6].name
-                            this.namePokemon.push(pokemon)
-                        })
+                    // fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
+                    //     .then(result => result.json())
+                    //     .then(result => {
+                    //         pokemon = result.names[6].name
+                    //         this.namePokemon.push(pokemon)
+                    //     })
                 }
             })
     },
@@ -64,8 +64,8 @@ new Vue({
             let info
             for (let index = 0; index < this.namePokemon.length; index++) {
 
-                if(i != 100000000000){
-                    if(this.infoPokemon[index].type1 == this.typefilter[i] || this.infoPokemon[index].type2 == this.typefilter[i]){
+                if (i != 100000000000) {
+                    if (this.infoPokemon[index].type1 == this.typefilter[i] || this.infoPokemon[index].type2 == this.typefilter[i]) {
                         this.FilterCheck = true
                         validate = 1
                         if (this.infoPokemon[index].type2) {
@@ -83,10 +83,10 @@ new Vue({
                         }
                         console.log(info)
                         this.filterName.push(info)
-                        
-                    } 
+
+                    }
                 }
-                
+
 
                 else if (this.namePokemon[index].indexOf(this.name) === 0 || this.infoPokemon[index].id == this.name) {
                     this.FilterCheck = true
@@ -110,7 +110,67 @@ new Vue({
             }
         },
 
-        
+        trie_pokemon(liste = [], liste_destination = []) {
+
+            if (this.trie == 4 || this.trie == 3) {
+                for (let i = 0; i < liste.length; i++) {
+                    for (let index = 0; index < liste.length; index++) {
+                        if ((index + 1) != liste.length) {
+                            if (liste[index + 1].id > liste[index].id) {
+                                let objet = liste[index]
+                                liste[index] = liste[index + 1]
+                                liste[index + 1] = objet
+                            }
+                        }
+                    }
+                }
+                if (this.trie == 4) {
+                    this.FilterCheck = false
+                    for (let i = 0; i < liste.length; i++) {
+                        liste_destination[i] = liste[i]
+                    }
+                    this.FilterCheck = true
+                } else {
+                    this.FilterCheck = false
+                    for (let i = 0; i < liste.length; i++) {
+                        liste_destination[i] = liste[(liste.length - 1) - i]
+                    }
+                    this.FilterCheck = true
+                }
+
+            } else {
+                for (let i = 0; i < liste.length; i++) {
+                    for (let index = 0; index < liste.length; index++) {
+                        if ((index + 1) != liste.length) {
+                            if (liste[index + 1].name > liste[index].name) {
+                                let objet = liste[index]
+                                liste[index] = liste[index + 1]
+                                liste[index + 1] = objet
+                            }
+                        }
+                    }
+                }
+                if (this.trie == 2) {
+                    this.FilterCheck = true
+                    for (let i = 0; i < liste.length; i++) {
+                        liste_destination[i] = liste[i]
+                    }
+                    this.FilterCheck = false
+                } else {
+                    this.FilterCheck = false
+                    for (let i = 0; i < liste.length; i++) {
+                        liste_destination[i] = liste[(liste.length - 1) - i]
+                    }
+                    this.FilterCheck = true
+                }
+            }
+            liste_destination.forEach(element => {
+                console.log(element.id)
+            });
+            // console.log(liste_destination)
+        }
+
+
 
 
     }
