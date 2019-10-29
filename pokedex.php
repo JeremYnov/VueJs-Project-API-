@@ -69,13 +69,8 @@ if (!isset($_GET["page"])) {
                                         <p v-else-if="value.id < 100">N°0{{ value.id}}</p>
                                         <p v-else>N°{{ value.id + 1}}</p>
                                     </div>
-<<<<<<< HEAD
                                     <div class="poke-name">
                                         <p>{{ value.name }}</p>
-=======
-                                    <div class="poke-name capitalize">
-                                        <p>{{ infoPokemon[index].name }}</p>
->>>>>>> 0a480dc2ce8d495562f0aa7d201be533a56d73a0
                                     </div>
                                     <div class="poke-type capitalize">
 
