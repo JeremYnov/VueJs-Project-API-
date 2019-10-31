@@ -19,40 +19,47 @@ new Vue({
         this.page = this.page.split("=")
         this.page = this.page[1]
         this.page = Number(this.page)
-        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964')
+        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=500')
             .then(response => response.json())
             .then(json => {
                 for (let index = 1; index < json.results.length; index++) {
-                    // console.log("l'index est: " + index)
-                    fetch(`https://pokeapi.co/api/v2/pokemon/${index}`)
-                        .then(result => result.json())
-                        .then(result => {
-                            // console.log("l'index est: " + index)
-                            // console.log("l'id est: " + result.id)
-                            let pokemon
-                            if (result.types[1]) {
-                                pokemon = {
-                                    id: result.id, name: result.name, image: result.sprites.front_default,
-                                    type1: result.types[0].type.name, type2: result.types[1].type.name
-                                }
-                            } else {
-                                pokemon = {
-                                    id: result.id, name: result.name, image: result.sprites.front_default,
-                                    type1: result.types[0].type.name
-                                }
-                            }
-                            // this.infoPokemon[result.id] = pokemon
-                            this.infoPokemon.push(pokemon)
-                            if (index >= (20 * (this.page - 1)) && index <= ((20 * (this.page - 1)) + 20)){
-                                this.filterPage.push(pokemon) 
-                            }
-                        })
-                    fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
-                        .then(result => result.json())
-                        .then(result => {
-                            pokemon = result.names[6].name
-                            this.namePokemon.push(pokemon)
-                        })
+                    if (index == 116 || index == 121 || index == 132 || index == 276) { // pas de pokemon sur ces index dans l'api
+                    } else {
+                        fetch(`https://pokeapi.co/api/v2/pokemon/${index}`)
+                            .then(result => result.json())
+                            .then(result => {
+                                fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
+                                    .then(results => results.json())
+                                    .then(results => {
+
+                                        let pokemon
+                                        if (result.types[1]) {
+                                            pokemon = {
+                                                id: result.id, name: results.names[6].name, image: result.sprites.front_default,
+                                                type1: result.types[0].type.name, type2: result.types[1].type.name
+                                            }
+                                        } else {
+                                            pokemon = {
+                                                id: result.id, name: results.names[6].name, image: result.sprites.front_default,
+                                                type1: result.types[0].type.name
+                                            }
+                                        }
+                                        this.infoPokemon.push(pokemon)
+                                        if(this.page == 1){
+                                            if (index >= (22 * (this.page - 1)) && index <= ((22 * (this.page - 1)) + 21)) {
+                                                this.filterPage.push(pokemon)
+                                            }
+                                        } else {
+                                            if (index >= (22 * (this.page - 1)) && index <= ((22 * (this.page - 1)) + 20)) {
+                                                this.filterPage.push(pokemon)
+                                            }
+                                        }
+                                        
+                                    })
+
+                            })
+
+                    }
                 }
             })
         console.log(this.filterPage)
@@ -72,7 +79,7 @@ new Vue({
             this.filterName = []
             let validate = 0
             let info
-            for (let index = 0; index < this.namePokemon.length; index++) {
+            for (let index = 0; index < this.infoPokemon.length; index++) {
 
                 if (i != 100000000000) {
                     if (this.infoPokemon[index].type1 == this.typefilter[i] || this.infoPokemon[index].type2 == this.typefilter[i]) {
@@ -80,12 +87,12 @@ new Vue({
                         validate = 1
                         if (this.infoPokemon[index].type2) {
                             info = {
-                                name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                                name: this.infoPokemon[index].name, id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
                                 type1: this.infoPokemon[index].type1, type2: this.infoPokemon[index].type2
                             }
                         } else {
                             info = {
-                                name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                                name: this.infoPokemon[index].name, id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
                                 type1: this.infoPokemon[index].type1
                             }
                         }
@@ -95,17 +102,17 @@ new Vue({
                 }
 
 
-                else if (this.namePokemon[index].indexOf(this.name) === 0 || this.infoPokemon[index].id == this.name) {
+                else if (this.infoPokemon[index].name.indexOf(this.name) === 0 || this.infoPokemon[index].id == this.name) {
                     this.FilterCheck = true
                     validate = 1
                     if (this.infoPokemon[index].type2) {
                         info = {
-                            name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                            name: this.infoPokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
                             type1: this.infoPokemon[index].type1, type2: this.infoPokemon[index].type2
                         }
                     } else {
                         info = {
-                            name: this.namePokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                            name: this.infoPokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
                             type1: this.infoPokemon[index].type1
                         }
                     }
@@ -158,11 +165,11 @@ new Vue({
                     }
                 }
                 if (this.trie == 2) {
-                    this.FilterCheck = true
+                    this.FilterCheck = false
                     for (let i = 0; i < liste.length; i++) {
                         liste_destination[i] = liste[i]
                     }
-                    this.FilterCheck = false
+                    this.FilterCheck = true
                 } else {
                     this.FilterCheck = false
                     for (let i = 0; i < liste.length; i++) {
@@ -171,10 +178,6 @@ new Vue({
                     this.FilterCheck = true
                 }
             }
-            liste_destination.forEach(element => {
-                console.log(element.id)
-            });
-            // console.log(liste_destination)
         },
 
         page_filter(index) {

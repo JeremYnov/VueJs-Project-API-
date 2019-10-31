@@ -57,7 +57,7 @@ if (!isset($_GET["page"])) {
 
                 <div v-if="FilterCheck == false">
                     <div class="poke-wrapper">
-                        <div v-on:click="url(value.id)" v-for="value in filterPage" class="pokemon">
+                        <div v-on:click="url(value.id)" v-for="(value, index) in filterPage" class="pokemon">
 
                             <a v-bind:href="urlPokemon">
                                 <div class="poke-image">
@@ -74,8 +74,8 @@ if (!isset($_GET["page"])) {
                                     </div>
                                     <div class="poke-type capitalize">
 
-                                        <div v-for="(todo, value) in typefilter" v-if=" value.type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ value.type1 }} </div>
-                                        <div v-for="(todo, value) in typefilter" v-if=" value.type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ value.type2 }} </div>
+                                        <div v-for="(todo, i) in typefilter" v-if=" value.type1 == typefilter[i]" class="type click" v-bind:class="typefilter[i]"> {{ value.type1 }} </div>
+                                        <div v-for="(todo, i) in typefilter" v-if=" value.type2 == typefilter[i]" class="type click" v-bind:class="typefilter[i]"> {{ value.type2 }} </div>
 
                                     </div>
                                 </div>
@@ -86,24 +86,24 @@ if (!isset($_GET["page"])) {
 
                 <div v-if="FilterCheck == true">
                     <div class="poke-wrapper">
-                        <div v-on:click="url(filterName[index].id)" v-for="(todo, index) in filterName" class="pokemon">
+                        <div v-on:click="url(value.id)" v-for="(value, index) in filterName" class="pokemon">
                             <a v-bind:href="urlPokemon">
                                 <div class="poke-image">
-                                    <img :src="filterName[index].image" alt="">
+                                    <img :src="value.image" alt="">
                                 </div>
                                 <div class="poke-infos">
                                     <div class="poke-id">
-                                        <p v-if="filterName[index].id < 9">N°00{{ filterName[index].id }}</p>
-                                        <p v-else-if="filterName[index].id < 100">N°0{{ filterName[index].id }}</p>
-                                        <p v-else>N°{{ filterName[index].id }}</p>
+                                        <p v-if="value.id < 9">N°00{{ value.id }}</p>
+                                        <p v-else-if="value.id < 100">N°0{{ value.id }}</p>
+                                        <p v-else>N°{{ value.id }}</p>
                                     </div>
                                     <div class="poke-name">
-                                        <p>{{ filterName[index].name }}</p>
+                                        <p>{{ value.name }}</p>
                                     </div>
                                     <div class="poke-type">
 
-                                        <div v-for="(todo, value) in typefilter" v-if=" filterName[index].type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ filterName[index].type1 }} </div>
-                                        <div v-for="(todo, value) in typefilter" v-if=" filterName[index].type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ filterName[index].type2 }} </div>
+                                        <div v-for="(todo, i) in typefilter" v-if=" value.type1 == typefilter[i]" class="type click" v-bind:class="typefilter[i]"> {{ value.type1 }} </div>
+                                        <div v-for="(todo, i) in typefilter" v-if=" value.type2 == typefilter[i]" class="type click" v-bind:class="typefilter[i]"> {{ value.type2 }} </div>
 
                                     </div>
                                 </div>
