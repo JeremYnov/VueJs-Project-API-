@@ -38,7 +38,7 @@ if (!isset($_GET["page"])) {
                         </select>
                         <button v-on:click="trie_pokemon(infoPokemon,filterName)" class="poke-select-button"> Valider </button>
                     </div>
-                    <div class="poke-filter-type">
+                    <div class="poke-filter-type capitalize">
                         <div v-for="(todo, index) in typefilter" class="type-container center">
                             <div v-on:click="filter(index)" class="type click" v-bind:class="typefilter[index]"> {{ typefilter[index] }} </div>
                         </div>
@@ -63,16 +63,16 @@ if (!isset($_GET["page"])) {
                                 <div class="poke-image">
                                     <img :src="value.image" alt="">
                                 </div>
-                                <div class="poke-infos">
+                                <div class="poke-infos capitalize">
                                     <div class="poke-id">
-                                        <p v-if="value.id < 9">N°00{{ value.id}}</p>
-                                        <p v-else-if="value.id < 100">N°0{{ value.id}}</p>
+                                        <p v-if="value.id <= 9">N°00{{ value.id}}</p>
+                                        <p v-else-if="value.id <= 99">N°0{{ value.id}}</p>
                                         <p v-else>N°{{ value.id + 1}}</p>
                                     </div>
                                     <div class="poke-name">
                                         <p>{{ value.name }}</p>
                                     </div>
-                                    <div class="poke-type capitalize">
+                                    <div class="poke-type">
 
                                         <div v-for="(todo, i) in typefilter" v-if=" value.type1 == typefilter[i]" class="type click" v-bind:class="typefilter[i]"> {{ value.type1 }} </div>
                                         <div v-for="(todo, i) in typefilter" v-if=" value.type2 == typefilter[i]" class="type click" v-bind:class="typefilter[i]"> {{ value.type2 }} </div>
@@ -91,7 +91,7 @@ if (!isset($_GET["page"])) {
                                 <div class="poke-image">
                                     <img :src="value.image" alt="">
                                 </div>
-                                <div class="poke-infos">
+                                <div class="poke-infos capitalize">
                                     <div class="poke-id">
                                         <p v-if="value.id < 9">N°00{{ value.id }}</p>
                                         <p v-else-if="value.id < 100">N°0{{ value.id }}</p>

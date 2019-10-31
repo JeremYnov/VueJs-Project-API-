@@ -9,7 +9,7 @@
 } */
 
 .background{
-    background-image: url("https://assets.awwwards.com/awards/images/2015/04/pattern.jpg");
+    background-image: url("../img/pattern.jpg");
     height: 100%;
     width: 100%;
 }
