@@ -19,11 +19,7 @@ new Vue({
         this.page = this.page.split("=")
         this.page = this.page[1]
         this.page = Number(this.page)
-<<<<<<< HEAD
         fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=500')
-=======
-        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=600')
->>>>>>> a6ac06c3c41a0aa9e2cf14327c8a7cc7b4bd0b37
             .then(response => response.json())
             .then(json => {
                 for (let index = 1; index < json.results.length; index++) {
