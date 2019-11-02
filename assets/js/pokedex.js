@@ -31,7 +31,6 @@ new Vue({
                                 fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
                                     .then(results => results.json())
                                     .then(results => {
-
                                         let pokemon
                                         if (result.types[1]) {
                                             pokemon = {
@@ -45,7 +44,7 @@ new Vue({
                                             }
                                         }
                                         this.infoPokemon.push(pokemon)
-                                        if(this.page == 1){
+                                        if (this.page == 1) {
                                             if (index >= (22 * (this.page - 1)) && index <= ((22 * (this.page - 1)) + 21)) {
                                                 this.filterPage.push(pokemon)
                                             }
@@ -54,7 +53,7 @@ new Vue({
                                                 this.filterPage.push(pokemon)
                                             }
                                         }
-                                        
+
                                     })
 
                             })
@@ -80,7 +79,6 @@ new Vue({
             let validate = 0
             let info
             for (let index = 0; index < this.infoPokemon.length; index++) {
-
                 if (i != 100000000000) {
                     if (this.infoPokemon[index].type1 == this.typefilter[i] || this.infoPokemon[index].type2 == this.typefilter[i]) {
                         this.FilterCheck = true
@@ -97,11 +95,8 @@ new Vue({
                             }
                         }
                         this.filterName.push(info)
-
                     }
                 }
-
-
                 else if (this.infoPokemon[index].name.indexOf(this.name) === 0 || this.infoPokemon[index].id == this.name) {
                     this.FilterCheck = true
                     validate = 1

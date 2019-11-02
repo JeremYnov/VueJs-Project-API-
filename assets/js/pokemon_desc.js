@@ -38,7 +38,6 @@ new Vue({
                         .then(result => {
                             for (let index = 0; index < result.damage_relations.double_damage_from.length; index++) {
                                 this.weaknesstable.push(result.damage_relations.double_damage_from[index].name);
-                                console.log(this.weaknesstable)
                             }
                             for (let index = 0; index < result.damage_relations.double_damage_to.length; index++) {
                                 this.strengthtable.push(result.damage_relations.double_damage_to[index].name);
@@ -47,7 +46,6 @@ new Vue({
                     fetch(moretype1)
                         .then(result => result.json())
                         .then(result => {
-                            console.log(result)
                             for (let index = 0; index < result.damage_relations.double_damage_from.length; index++) {
                                 this.weaknesstable.push(result.damage_relations.double_damage_from[index].name);
                             }
