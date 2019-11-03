@@ -1,7 +1,7 @@
 <?php include("includes/header.php");
 if (!isset($_GET["id"])) {
     header("location: pokedex.php");
-}?>
+} ?>
 
 <section class="background">
     <div id="app" class="poke-desc-content-container center">
@@ -78,8 +78,24 @@ if (!isset($_GET["id"])) {
                 </div>
 
             </div>
+            <div class="Pokevolution">
+                <div class="first-evolution" v-if="typeof(firstEvolutionName.name)!='undefined'">
+                    <p>{{ firstEvolution.id }}</p>
+                    <p>{{ firstEvolutionName.name }}</p>
+                    <img :src="firstEvolution.image" alt="">
+                </div>
+                <div class="first-evolution" v-if="typeof(secondEvolutionName.name)!='undefined'">
+                    <p>{{ secondEvolution.id }}</p>
+                    <p>{{ secondEvolutionName.name }}</p>
+                    <img :src="secondEvolution.image" alt="">
+                </div>
+                <div class="first-evolution" v-if="typeof(lastEvolutionName.name)!='undefined'">
+                    <p>{{ lastEvolution.id }}</p>
+                    <p>{{ lastEvolutionName.name }}</p>
+                    <img :src="lastEvolution.image" alt="">
+                </div>
+            </div>
         </div>
-
     </div>
 </section>
 
