@@ -15,6 +15,9 @@ new Vue({
 
         axios.get(`https://pokeapi.co/api/v2/pokemon-species/${this.id}`)
         .then((result) => {
+            if(result.status != 200){
+                window.location.replace("error.php")
+            }
             pokemon = result.data.names[6].name
             this.namePokemon.push(pokemon)
         })

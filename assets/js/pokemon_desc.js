@@ -16,7 +16,7 @@ new Vue({
         firstEvolution: [],
         secondEvolutionName: "",
         secondEvolution: [],
-        lastEvolutionName:"",
+        lastEvolutionName: "",
         lastEvolution: []
         // FIN PARTIE AJOUTER
     },
@@ -30,6 +30,9 @@ new Vue({
 
         axios.get(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
             .then((result) => {
+                if (result.status != 200) {
+                    window.location.replace("error.php")
+                }
                 if (result.data.types[1]) {
                     this.infoPokemon = {
                         id: result.data.id, image: result.data.sprites.front_default,
@@ -41,6 +44,9 @@ new Vue({
                     moretype1 = result.data.types[1].type.url
                     axios.get(moretype)
                         .then((result) => {
+                            if(result.status != 200){
+                                window.location.replace("error.php")
+                            }
                             for (let index = 0; index < result.data.damage_relations.double_damage_from.length; index++) {
                                 this.weaknesstable.push(result.data.damage_relations.double_damage_from[index].name);
                                 console.log(this.weaknesstable)
@@ -51,6 +57,9 @@ new Vue({
                         })
                     axios.get(moretype1)
                         .then((result) => {
+                            if(result.status != 200){
+                                window.location.replace("error.php")
+                            }
                             console.log(result)
                             for (let index = 0; index < result.data.damage_relations.double_damage_from.length; index++) {
                                 this.weaknesstable.push(result.data.damage_relations.double_damage_from[index].name);
@@ -71,6 +80,9 @@ new Vue({
                     moretype = result.data.types[0].type.url
                     axios.get(moretype)
                         .then((result) => {
+                            if(result.status != 200){
+                                window.location.replace("error.php")
+                            }
                             for (let index = 0; index < result.data.damage_relations.double_damage_from.length; index++) {
                                 this.weaknesstable.push(result.data.damage_relations.double_damage_from[index].name);
                             }
@@ -82,6 +94,9 @@ new Vue({
                 }
                 axios.get(`https://pokeapi.co/api/v2/pokemon-species/${this.id}`)
                     .then((result) => {
+                        if(result.status != 200){
+                            window.location.replace("error.php")
+                        }
                         indextable = []
                         for (let index = 0; index < result.data.flavor_text_entries.length; index++) {
                             if (result.data.flavor_text_entries[index].language.name == "fr") {
@@ -93,7 +108,10 @@ new Vue({
                         //AJOUTER LE 03/11/2019 A VERIFIER
                         Pokevolution = result.data.evolution_chain.url
                         axios.get(Pokevolution)
-                        .then((result) => {
+                            .then((result) => {
+                                if(result.status != 200){
+                                    window.location.replace("error.php")
+                                }
                                 if (typeof (result.data.chain.evolves_to[0]) == "undefined") {
                                     console.log("UNDEFINED")
                                 }
@@ -101,11 +119,17 @@ new Vue({
                                     urlSecondEvolution = result.data.chain.evolves_to[0].species.url
                                     console.log(urlSecondEvolution)
                                     axios.get(urlSecondEvolution)
-                                    .then((result) => {
+                                        .then((result) => {
+                                            if(result.status != 200){
+                                                window.location.replace("error.php")
+                                            }
                                             this.secondEvolutionName = { name: result.data.names[6].name }
                                             urlSecondEvolution = result.data.varieties[0].pokemon.url
                                             axios.get(urlSecondEvolution)
-                                            .then((result) => {
+                                                .then((result) => {
+                                                    if(result.status != 200){
+                                                        window.location.replace("error.php")
+                                                    }
                                                     this.secondEvolution = { id: result.data.id, image: result.data.sprites.front_default }
                                                 })
                                         })
@@ -116,11 +140,17 @@ new Vue({
                                         urlLastEvolution = result.data.chain.evolves_to[0].evolves_to[0].species.url
                                         console.log(urlLastEvolution)
                                         axios.get(urlLastEvolution)
-                                        .then((result) => {
+                                            .then((result) => {
+                                                if(result.status != 200){
+                                                    window.location.replace("error.php")
+                                                }
                                                 this.lastEvolutionName = { name: result.data.names[6].name }
                                                 urlLastEvolution = result.data.varieties[0].pokemon.url
                                                 axios.get(urlLastEvolution)
-                                                .then((result) => {
+                                                    .then((result) => {
+                                                        if(result.status != 200){
+                                                            window.location.replace("error.php")
+                                                        }
                                                         this.lastEvolution = { id: result.data.id, image: result.data.sprites.front_default }
                                                     })
                                             })
@@ -129,11 +159,17 @@ new Vue({
 
                                 urlFirstEvolution = result.data.chain.species.url
                                 axios.get(urlFirstEvolution)
-                                .then((result) => {
+                                    .then((result) => {
+                                        if(result.status != 200){
+                                            window.location.replace("error.php")
+                                        }
                                         this.firstEvolutionName = { name: result.data.names[6].name }
                                         urlFirstEvolution = result.data.varieties[0].pokemon.url
                                         axios.get(urlFirstEvolution)
-                                        .then((result) => {
+                                            .then((result) => {
+                                                if(result.status != 200){
+                                                    window.location.replace("error.php")
+                                                }
                                                 this.firstEvolution = { id: result.data.id, image: result.data.sprites.front_default }
                                             })
                                     })

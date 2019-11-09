@@ -16,14 +16,23 @@ new Vue({
 
     mounted: function () {
         axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=500')
-        .then((response) => {
+            .then((response) => {
+                if(response.status != 200){
+                    window.location.replace("error.php")
+                }
                 for (let index = 1; index < response.data.results.length; index++) {
                     if (index == 116 || index == 121 || index == 132 || index == 276) { // pas de pokemon sur ces index dans l'api
                     } else {
                         axios.get(`https://pokeapi.co/api/v2/pokemon/${index}`)
-                        .then((result) => {
+                            .then((result) => {
+                                if(result.status != 200){
+                                    window.location.replace("error.php")
+                                }
                                 axios.get(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
-                                .then((results) => {
+                                    .then((results) => {
+                                        if(results.status != 200){
+                                            window.location.replace("error.php")
+                                        }
                                         let pokemon
                                         if (result.data.types[1]) {
                                             pokemon = {
@@ -42,7 +51,6 @@ new Vue({
                                         this.page = Number(this.page)
                                         if (this.page == 1) {
                                             if (index >= (22 * (this.page - 1)) && index <= ((22 * (this.page - 1)) + 21)) {
-                                                console.log(pokemon)
                                                 this.filterPage.push(pokemon)
                                             }
                                         } else {
