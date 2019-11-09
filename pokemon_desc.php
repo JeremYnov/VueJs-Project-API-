@@ -6,6 +6,8 @@ if (!isset($_GET["id"])) {
 <section class="background">
     <div id="app" class="poke-desc-content-container center">
         <div class="poke-desc-container">
+            <a href=""></a>
+            <a href=""></a>
             <div class="poke-desc">
                 <div class="poke-image">
                     <img :src="infoPokemon.image" alt="">
@@ -25,17 +27,13 @@ if (!isset($_GET["id"])) {
                     <div class="poke-description">
                         <p>{{ infoPokemonSpecies.description }}</p>
                     </div>
-                    <div class="poke-categorie">
-                        <p>{{ infoPokemonSpecies.categorie }}</p>
-                    </div>
-
                     <div class="poke-type center capitalize">
                         <div class="poke-type-container">
                             <div class="poke-type-title text-center">
                                 <h2>Type</h2>
                             </div>
                             <!-- <div v-for="(todo, value) in typefilter"> -->
-                            <div class="types">
+                            <div class="types text-center">
                                 <div v-for="(todo, value) in typefilter" v-if=" infoPokemon.type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon.type1 }} </div>
                                 <div v-for="(todo, value) in typefilter" v-if=" infoPokemon.type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon.type2 }} </div>
                             </div>
@@ -65,7 +63,9 @@ if (!isset($_GET["id"])) {
                             </div>
                         </div>
                     </div>
-
+                    <div class="poke-categorie">
+                        <p>{{ infoPokemonSpecies.categorie }}</p>
+                    </div>
                     <p v-if="infoPokemon.taille <= 9">Taille: 0.{{ infoPokemon.taille }} m</p>
                     <p v-else-if="infoPokemon.taille <= 99">Taille: {{ infoPokemon.id }} m</p>
                     <p v-else>Taille: {{ infoPokemon.taille}} m</p>
@@ -78,8 +78,24 @@ if (!isset($_GET["id"])) {
                 </div>
 
             </div>
+            <div class="Pokevolution">
+                <div class="first-evolution" v-if="typeof(firstEvolutionName.name)!='undefined'">
+                    <p>{{ firstEvolution.id }}</p>
+                    <p>{{ firstEvolutionName.name }}</p>
+                    <img :src="firstEvolution.image" alt="">
+                </div>
+                <div class="first-evolution" v-if="typeof(secondEvolutionName.name)!='undefined'">
+                    <p>{{ secondEvolution.id }}</p>
+                    <p>{{ secondEvolutionName.name }}</p>
+                    <img :src="secondEvolution.image" alt="">
+                </div>
+                <div class="first-evolution" v-if="typeof(lastEvolutionName.name)!='undefined'">
+                    <p>{{ lastEvolution.id }}</p>
+                    <p>{{ lastEvolutionName.name }}</p>
+                    <img :src="lastEvolution.image" alt="">
+                </div>
+            </div>
         </div>
-
     </div>
 </section>
 

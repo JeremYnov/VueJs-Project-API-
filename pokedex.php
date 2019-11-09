@@ -65,8 +65,8 @@ if (!isset($_GET["page"])) {
                                 </div>
                                 <div class="poke-infos capitalize">
                                     <div class="poke-id">
-                                        <p v-if="value.id <= 9">N°00{{ value.id}}</p>
-                                        <p v-else-if="value.id <= 99">N°0{{ value.id}}</p>
+                                        <p v-if="value.id < 10">N°00{{ value.id}}</p>
+                                        <p v-else-if="value.id <= 100">N°0{{ value.id}}</p>
                                         <p v-else>N°{{ value.id + 1}}</p>
                                     </div>
                                     <div class="poke-name">
@@ -93,7 +93,7 @@ if (!isset($_GET["page"])) {
                                 </div>
                                 <div class="poke-infos capitalize">
                                     <div class="poke-id">
-                                        <p v-if="value.id < 9">N°00{{ value.id }}</p>
+                                        <p v-if="value.id < 10">N°00{{ value.id }}</p>
                                         <p v-else-if="value.id < 100">N°0{{ value.id }}</p>
                                         <p v-else>N°{{ value.id }}</p>
                                     </div>

@@ -5,13 +5,20 @@ new Vue({
         id: "",
         infoPokemon: [],
         infoPokemonSpecies: [],
-        infoPokemonEvo: [],
         infoType: [],
         infoType2: [],
         // AJOUTER LE 28/10/2019 A VERIFIER
         weaknesstable: [],
         strengthtable: [],
         typefilter: ["fire", "poison", "normal", "fighting", "flying", "ground", "rock", "bug", "ghost", "steel", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "shadow"],
+        // AJOUTER LE 28/10/2019 A VERIFIER
+        firstEvolutionName: "",
+        firstEvolution: [],
+        secondEvolutionName: "",
+        secondEvolution: [],
+        lastEvolutionName:"",
+        lastEvolution: []
+        // FIN PARTIE AJOUTER
     },
 
 
@@ -81,8 +88,64 @@ new Vue({
                                 indextable.push(index)
                             }
                         }
+                        this.infoPokemonSpecies = { name: result.names[6].name, description: result.flavor_text_entries[indextable[0]].flavor_text + " " + result.flavor_text_entries[indextable[1]].flavor_text + " " + result.flavor_text_entries[indextable[2]].flavor_text, categorie: result.genera[6].genus }
 
-                        this.infoPokemonSpecies = { name: result.data.names[6].name, description: result.data.flavor_text_entries[indextable[0]].flavor_text + " " + result.data.flavor_text_entries[indextable[1]].flavor_text + " " + result.data.flavor_text_entries[indextable[2]].flavor_text, categorie: result.data.genera[6].genus }
+                        //AJOUTER LE 03/11/2019 A VERIFIER
+                        Pokevolution = result.evolution_chain.url
+                        fetch(Pokevolution)
+                            .then(result => result.json())
+                            .then(result => {
+                                if (typeof (result.chain.evolves_to[0]) == "undefined") {
+                                    console.log("UNDEFINED")
+                                }
+                                else {
+                                    urlSecondEvolution = result.chain.evolves_to[0].species.url
+                                    console.log(urlSecondEvolution)
+                                    fetch(urlSecondEvolution)
+                                        .then(result => result.json())
+                                        .then(result => {
+                                            this.secondEvolutionName = { name: result.names[6].name }
+                                            urlSecondEvolution = result.varieties[0].pokemon.url
+                                            fetch(urlSecondEvolution)
+                                                .then(result => result.json())
+                                                .then(result => {
+                                                    this.secondEvolution = { id: result.id, image: result.sprites.front_default }
+                                                })
+                                        })
+                                    if (typeof (result.chain.evolves_to[0].evolves_to[0]) == "undefined") {
+                                        console.log("UNDEFINED")
+                                    }
+                                    else {
+                                        urlLastEvolution = result.chain.evolves_to[0].evolves_to[0].species.url
+                                        console.log(urlLastEvolution)
+                                        fetch(urlLastEvolution)
+                                            .then(result => result.json())
+                                            .then(result => {
+                                                this.lastEvolutionName = { name: result.names[6].name }
+                                                urlLastEvolution = result.varieties[0].pokemon.url
+                                                fetch(urlLastEvolution)
+                                                    .then(result => result.json())
+                                                    .then(result => {
+                                                        this.lastEvolution = { id: result.id, image: result.sprites.front_default }
+                                                    })
+                                            })
+                                    }
+                                }
+
+                                urlFirstEvolution = result.chain.species.url
+                                fetch(urlFirstEvolution)
+                                    .then(result => result.json())
+                                    .then(result => {
+                                        this.firstEvolutionName = { name: result.names[6].name }
+                                        urlFirstEvolution = result.varieties[0].pokemon.url
+                                        fetch(urlFirstEvolution)
+                                            .then(result => result.json())
+                                            .then(result => {
+                                                this.firstEvolution = { id: result.id, image: result.sprites.front_default }
+                                            })
+                                    })
+                            })
+                        //FIN DE LA PARTIE AJOUTEE
                     })
             })
     },

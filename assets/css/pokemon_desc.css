@@ -11,6 +11,12 @@
     grid-template-columns: 4fr 6fr;
     grid-column-gap: 1.5rem;
 }
+.poke-image{
+    background: #e7e7e7;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
 .poke-image img{
     width: 100%;
     background: #e7e7e7;
@@ -30,6 +36,7 @@
 }
 .poke-description{
     font-size: 18px;
+    text-align: justify;
 }
 
 
