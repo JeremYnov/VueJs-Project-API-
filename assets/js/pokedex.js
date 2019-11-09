@@ -45,6 +45,7 @@ new Vue({
                                                 type1: result.data.types[0].type.name
                                             }
                                         }
+                                        this.infoPokemon.push(pokemon)
                                         this.page = window.location.href
                                         this.page = this.page.split("=")
                                         this.page = this.page[1]
@@ -106,12 +107,12 @@ new Vue({
                     validate = 1
                     if (this.infoPokemon[index].type2) {
                         info = {
-                            name: this.infoPokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                            name: this.infoPokemon[index].name, id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
                             type1: this.infoPokemon[index].type1, type2: this.infoPokemon[index].type2
                         }
                     } else {
                         info = {
-                            name: this.infoPokemon[index], id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
+                            name: this.infoPokemon[index].name, id: this.infoPokemon[index].id, image: this.infoPokemon[index].image,
                             type1: this.infoPokemon[index].type1
                         }
                     }
