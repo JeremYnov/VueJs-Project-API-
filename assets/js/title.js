@@ -13,10 +13,9 @@ new Vue({
         this.id = this.id[1]
 
 
-        fetch(`https://pokeapi.co/api/v2/pokemon-species/${this.id}`)
-        .then(result => result.json())
-        .then(result => { 
-            pokemon = result.names[6].name
+        axios.get(`https://pokeapi.co/api/v2/pokemon-species/${this.id}`)
+        .then((result) => {
+            pokemon = result.data.names[6].name
             this.namePokemon.push(pokemon)
         })
     },

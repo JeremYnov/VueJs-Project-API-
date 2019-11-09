@@ -15,38 +15,34 @@ new Vue({
 
 
     mounted: function () {
-        this.page = window.location.href
-        this.page = this.page.split("=")
-        this.page = this.page[1]
-        this.page = Number(this.page)
-        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=500')
-            .then(response => response.json())
-            .then(json => {
-                for (let index = 1; index < json.results.length; index++) {
+        axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=500')
+        .then((response) => {
+                for (let index = 1; index < response.data.results.length; index++) {
                     if (index == 116 || index == 121 || index == 132 || index == 276) { // pas de pokemon sur ces index dans l'api
                     } else {
-                        fetch(`https://pokeapi.co/api/v2/pokemon/${index}`)
-                            .then(result => result.json())
-                            .then(result => {
-                                fetch(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
-                                    .then(results => results.json())
-                                    .then(results => {
-
+                        axios.get(`https://pokeapi.co/api/v2/pokemon/${index}`)
+                        .then((result) => {
+                                axios.get(`https://pokeapi.co/api/v2/pokemon-species/${index}`)
+                                .then((results) => {
                                         let pokemon
-                                        if (result.types[1]) {
+                                        if (result.data.types[1]) {
                                             pokemon = {
-                                                id: result.id, name: results.names[6].name, image: result.sprites.front_default,
-                                                type1: result.types[0].type.name, type2: result.types[1].type.name
+                                                id: result.data.id, name: results.data.names[6].name, image: result.data.sprites.front_default,
+                                                type1: result.data.types[0].type.name, type2: result.data.types[1].type.name
                                             }
                                         } else {
                                             pokemon = {
-                                                id: result.id, name: results.names[6].name, image: result.sprites.front_default,
-                                                type1: result.types[0].type.name
+                                                id: result.data.id, name: results.data.names[6].name, image: result.data.sprites.front_default,
+                                                type1: result.data.types[0].type.name
                                             }
                                         }
-                                        this.infoPokemon.push(pokemon)
-                                        if(this.page == 1){
+                                        this.page = window.location.href
+                                        this.page = this.page.split("=")
+                                        this.page = this.page[1]
+                                        this.page = Number(this.page)
+                                        if (this.page == 1) {
                                             if (index >= (22 * (this.page - 1)) && index <= ((22 * (this.page - 1)) + 21)) {
+                                                console.log(pokemon)
                                                 this.filterPage.push(pokemon)
                                             }
                                         } else {
@@ -54,7 +50,7 @@ new Vue({
                                                 this.filterPage.push(pokemon)
                                             }
                                         }
-                                        
+
                                     })
 
                             })
@@ -62,7 +58,6 @@ new Vue({
                     }
                 }
             })
-        console.log(this.filterPage)
     },
 
 
