@@ -88,60 +88,53 @@ new Vue({
                                 indextable.push(index)
                             }
                         }
-                        this.infoPokemonSpecies = { name: result.names[6].name, description: result.flavor_text_entries[indextable[0]].flavor_text + " " + result.flavor_text_entries[indextable[1]].flavor_text + " " + result.flavor_text_entries[indextable[2]].flavor_text, categorie: result.genera[6].genus }
+                        this.infoPokemonSpecies = { name: result.data.names[6].name, description: result.data.flavor_text_entries[indextable[0]].flavor_text + " " + result.data.flavor_text_entries[indextable[1]].flavor_text + " " + result.data.flavor_text_entries[indextable[2]].flavor_text, categorie: result.data.genera[6].genus }
 
                         //AJOUTER LE 03/11/2019 A VERIFIER
-                        Pokevolution = result.evolution_chain.url
-                        fetch(Pokevolution)
-                            .then(result => result.json())
-                            .then(result => {
-                                if (typeof (result.chain.evolves_to[0]) == "undefined") {
+                        Pokevolution = result.data.evolution_chain.url
+                        axios.get(Pokevolution)
+                        .then((result) => {
+                                if (typeof (result.data.chain.evolves_to[0]) == "undefined") {
                                     console.log("UNDEFINED")
                                 }
                                 else {
-                                    urlSecondEvolution = result.chain.evolves_to[0].species.url
+                                    urlSecondEvolution = result.data.chain.evolves_to[0].species.url
                                     console.log(urlSecondEvolution)
-                                    fetch(urlSecondEvolution)
-                                        .then(result => result.json())
-                                        .then(result => {
-                                            this.secondEvolutionName = { name: result.names[6].name }
-                                            urlSecondEvolution = result.varieties[0].pokemon.url
-                                            fetch(urlSecondEvolution)
-                                                .then(result => result.json())
-                                                .then(result => {
-                                                    this.secondEvolution = { id: result.id, image: result.sprites.front_default }
+                                    axios.get(urlSecondEvolution)
+                                    .then((result) => {
+                                            this.secondEvolutionName = { name: result.data.names[6].name }
+                                            urlSecondEvolution = result.data.varieties[0].pokemon.url
+                                            axios.get(urlSecondEvolution)
+                                            .then((result) => {
+                                                    this.secondEvolution = { id: result.data.id, image: result.data.sprites.front_default }
                                                 })
                                         })
-                                    if (typeof (result.chain.evolves_to[0].evolves_to[0]) == "undefined") {
+                                    if (typeof (result.data.chain.evolves_to[0].evolves_to[0]) == "undefined") {
                                         console.log("UNDEFINED")
                                     }
                                     else {
-                                        urlLastEvolution = result.chain.evolves_to[0].evolves_to[0].species.url
+                                        urlLastEvolution = result.data.chain.evolves_to[0].evolves_to[0].species.url
                                         console.log(urlLastEvolution)
-                                        fetch(urlLastEvolution)
-                                            .then(result => result.json())
-                                            .then(result => {
-                                                this.lastEvolutionName = { name: result.names[6].name }
-                                                urlLastEvolution = result.varieties[0].pokemon.url
-                                                fetch(urlLastEvolution)
-                                                    .then(result => result.json())
-                                                    .then(result => {
-                                                        this.lastEvolution = { id: result.id, image: result.sprites.front_default }
+                                        axios.get(urlLastEvolution)
+                                        .then((result) => {
+                                                this.lastEvolutionName = { name: result.data.names[6].name }
+                                                urlLastEvolution = result.data.varieties[0].pokemon.url
+                                                axios.get(urlLastEvolution)
+                                                .then((result) => {
+                                                        this.lastEvolution = { id: result.data.id, image: result.data.sprites.front_default }
                                                     })
                                             })
                                     }
                                 }
 
-                                urlFirstEvolution = result.chain.species.url
-                                fetch(urlFirstEvolution)
-                                    .then(result => result.json())
-                                    .then(result => {
-                                        this.firstEvolutionName = { name: result.names[6].name }
-                                        urlFirstEvolution = result.varieties[0].pokemon.url
-                                        fetch(urlFirstEvolution)
-                                            .then(result => result.json())
-                                            .then(result => {
-                                                this.firstEvolution = { id: result.id, image: result.sprites.front_default }
+                                urlFirstEvolution = result.data.chain.species.url
+                                axios.get(urlFirstEvolution)
+                                .then((result) => {
+                                        this.firstEvolutionName = { name: result.data.names[6].name }
+                                        urlFirstEvolution = result.data.varieties[0].pokemon.url
+                                        axios.get(urlFirstEvolution)
+                                        .then((result) => {
+                                                this.firstEvolution = { id: result.data.id, image: result.data.sprites.front_default }
                                             })
                                     })
                             })
