@@ -2,11 +2,13 @@
     padding: 5.5rem 1.5rem 0 0;
     max-width: 70%;
 }
-.poke-desc{
+.poke-desc-wrapper{
     background: #f6f6f6;
-    border-radius:20px;
+    border-radius: 20px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
     padding: 30px;
+}
+.poke-desc{
     display: grid;
     grid-template-columns: 4fr 6fr;
     grid-column-gap: 1.5rem;
@@ -78,3 +80,36 @@
 .steel{background:#abadba;}
 .dark{background:#8a6b57;}
 .fairy{background:#daa6d7;}
+
+
+.pokevolution{
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+    padding: 50px 0;
+    background: #e7e7e7;
+    border-radius: 20px;
+}
+.pokevolution-infos-wrapper{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+.pokevolution-id{
+    padding-right: 7px;
+}
+.evolution-image img{
+    width: 200px;
+    border-top: 1px solid #d4d4d4;
+}
+.first-evolution,.second-evolution,.last-evolution{
+    background: #f6f6f6;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+.arrow{
+    display: flex;
+    align-items: center;
+}
+
