@@ -3,6 +3,10 @@ a{
     color: #3b3b3b;
 }
 
+#pokedex{
+    padding-bottom: 30px;
+}
+
 .pokedex-content-container{
     display: grid;
     grid-template-columns: 2fr 8fr;
@@ -215,4 +219,12 @@ button:focus{
 .poke-pokedex:hover{
     background:#e91d26;
     color: white;
+}
+
+.page{
+    cursor: pointer;
+    margin: 10px;
+    padding: 8px;
+    border: 3px solid red;
+    border-radius: 15%;
 }
