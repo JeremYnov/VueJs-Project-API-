@@ -41,7 +41,12 @@
     text-align: justify;
 }
 
-
+.poke-type-container{
+    padding-bottom: 10px;
+}
+.first-type{
+    margin-right: 0.5rem;
+}
 .poke-weak-strength-wrapper{
     display: grid;
     grid-template-columns: 5fr 5fr;
@@ -80,6 +85,7 @@
 .steel{background:#abadba;}
 .dark{background:#8a6b57;}
 .fairy{background:#daa6d7;}
+.ghost{background:#817a8a;}
 
 
 .pokevolution{

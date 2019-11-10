@@ -35,8 +35,8 @@ if (!isset($_GET["id"])) {
                                 </div>
                                 <!-- <div v-for="(todo, value) in typefilter"> -->
                                 <div class="types text-center">
-                                    <div v-for="(todo, value) in typefilter" v-if=" infoPokemon.type1 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon.type1 }} </div>
-                                    <div v-for="(todo, value) in typefilter" v-if=" infoPokemon.type2 == typefilter[value]" class="type click" v-bind:class="typefilter[value]"> {{ infoPokemon.type2 }} </div>
+                                    <div v-for="(todo, value) in typefilter" v-if=" infoPokemon.type1 == typefilter[value]" class="type click first-type" v-bind:class="typefilter[value]"> {{ infoPokemon.type1 }} </div>
+                                    <div v-for="(todo, value) in typefilter" v-if=" infoPokemon.type2 == typefilter[value]" class="type click second-type" v-bind:class="typefilter[value]"> {{ infoPokemon.type2 }} </div>
                                 </div>
                                 <!-- </div> -->
                             </div>

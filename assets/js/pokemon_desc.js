@@ -10,7 +10,7 @@ new Vue({
         // AJOUTER LE 28/10/2019 A VERIFIER
         weaknesstable: [],
         strengthtable: [],
-        typefilter: ["fire", "poison", "normal", "fighting", "flying", "ground", "rock", "bug", "ghost", "steel", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "shadow"],
+        typefilter: ["fire", "poison", "normal", "fighting", "flying", "ground", "rock", "bug", "steel", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "shadow","ghost"],
         // AJOUTER LE 28/10/2019 A VERIFIER
         firstEvolutionName: "",
         firstEvolution: [],

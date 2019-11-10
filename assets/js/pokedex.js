@@ -4,7 +4,7 @@ new Vue({
         urlPokemon: '',
         infoPokemon: [],
         namePokemon: [],
-        typefilter: ["fire", "poison", "normal", "fighting", "flying", "ground", "rock", "bug", "steel", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "shadow"],
+        typefilter: ["fire", "poison", "normal", "fighting", "flying", "ground", "rock", "bug", "steel", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "shadow","ghost"],
         name: '',
         filterName: [],
         FilterCheck: false,
