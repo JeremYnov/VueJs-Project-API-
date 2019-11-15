@@ -9,16 +9,6 @@
                         <img src="assets/icons/icon-pokeball.png" alt="">
                     </div>
 
-                    <div v-if="page < 4">
-                        <button class="page" v-for="n in 5" :key="n" v-on:click="page_filter(n)"> {{ n }} </button>
-                    </div>
-                    <div v-else>
-                        <div v-for="n in (page + 2)" :key="n">
-                            <button class="page"  v-if="n >= (page - 2)" v-on:click="page_filter(n)"> {{ n }} </button>
-                        </div>
-                        
-                    </div>
-
                     <div class="searchbar">
                         <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar">
                         <button v-on:click="filter(100000000000)" class="searchbar-button click"><img src="assets/icons/icons8-chercher-40.png" alt=""></button>
@@ -118,6 +108,14 @@
                         </div>
                     </div>
                 </div>
+                <div v-if="page < 4">
+                        <button class="page" v-for="n in 5" :key="n" v-on:click="page_filter(n)"> {{ n }} </button>
+                    </div>
+                    <div v-else>
+                        <div v-for="n in (page + 2)" :key="n">
+                            <button class="page"  v-if="n >= (page - 2)" v-on:click="page_filter(n)"> {{ n }} </button>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
