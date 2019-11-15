@@ -21,9 +21,15 @@
 @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
 
 *{
- margin: 0;
- padding: 0;
- font-family: 'Righteous', cursive;
+    margin: 0;
+    padding: 0;
+    font-family: 'Righteous', cursive;
+}
+
+.background{
+    background-image: url("../assets/pattern.jpg");
+    min-height: 100vh;
+    width: 100%;
 }
 
 nav{
