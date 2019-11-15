@@ -1,5 +1,5 @@
 <template>
-    <h1>pokedex</h1>
+    <h1>Pokedex</h1>
 </template>
 
 <script>
