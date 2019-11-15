@@ -10,11 +10,11 @@
                     </div>
 
                     <div v-if="page < 4">
-                        <button class="page" v-for="n in 5" :key="n" v-on:click="page_filter(n)"> {{ n }} </button>
+                        <button class="page" v-for="n in 5" :key="n" @click="page_filter(n)"> {{ n }} </button>
                     </div>
                     <div v-else>
-                        <div v-for="n in (page + 2)" :key="n">
-                            <button class="page"  v-if="n >= (page - 2)" v-on:click="page_filter(n)"> {{ n }} </button>
+                        <div v-for="nb in (page + 2)" :key="nb">
+                            <button class="page"  v-if="nb >= (page - 2)" v-on:click="page_filter(nb)"> {{ nb }} </button>
                         </div>
                         
                     </div>
@@ -56,7 +56,7 @@
 
                 <div v-if="FilterCheck == false">
                     <div class="poke-wrapper">
-                        <div v-on:click="url(value.id)" v-for="(value, index) in filterPage" :key="index" class="pokemon">
+                        <div v-on:click="url(value.id)" v-for="(value, count) in filterPage" :key="count" class="pokemon">
 
                             <a v-bind:href="urlPokemon">
                                 <div class="poke-image">
@@ -89,7 +89,7 @@
 
                 <div v-if="FilterCheck == true">
                     <div class="poke-wrapper">
-                        <div v-on:click="url(value.id)" v-for="(value, index) in filterName" :key="index" class="pokemon">
+                        <div v-on:click="url(value.id)" v-for="value in filterName" :key="value" class="pokemon">
                             <a v-bind:href="urlPokemon">
                                 <div class="poke-image">
                                     <img :src="value.image" alt="">
@@ -104,7 +104,7 @@
                                         <p>{{ value.name }}</p>
                                     </div>
                                     <div class="poke-type">
-                                        <div v-for="(todo, i) in typefilter" :key="i">
+                                        <div v-for="(todo, i) in typefilter" :key="typefilter[i]">
                                              <div  v-if=" value.type1 == typefilter[i]" class="type click" v-bind:class="typefilter[i]"> {{ value.type1 }} </div>
                                         </div>
                                        <div v-for="(todo, i) in typefilter" :key="i">
@@ -311,7 +311,7 @@ export default {
         },
 
         page_filter(index) {
-            window.location.replace(`pokedex.php?page=${index}`);
+            this.$router.push(`/pokedex/${index}`)
         }
 
 
