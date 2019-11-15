@@ -1,24 +1,48 @@
 {
-  "name": "poke-projet",
-  "version": "1.0.0",
-  "description": "Projet javascript API (PokeApi)",
-  "main": "index.js",
+  "name": "poke_projet",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
   "dependencies": {
     "axios": "^0.19.0",
-    "vue-axios": "^2.1.5"
+    "core-js": "^3.3.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JeremYnov/Poke-projet.git"
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
   },
-  "author": "JeremYnov loux22",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JeremYnov/Poke-projet/issues"
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   },
-  "homepage": "https://github.com/JeremYnov/Poke-projet#readme"
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }

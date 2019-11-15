@@ -1,0 +1,231 @@
+<template>
+    <h1>pokedex</h1>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+a{
+    text-decoration: none;
+    color: #3b3b3b;
+}
+
+.pokedex-content-container{
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    grid-column-gap: 1.5rem;
+    padding: 5.5rem 1.5rem 0 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+}
+.poke-container{
+    background: #f6f6f6;
+    border-radius:20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+}
+
+.poke-wrapper{
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    grid-template-rows: auto;
+    grid-gap: 1.5rem;
+    margin: 0 0 1.5rem;
+}
+
+.poke-filter-container{
+    background: #f6f6f6;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px 10px;
+    
+}
+.poke-logo-filter{
+    padding-bottom: 10px;
+}
+.poke-logo-filter img{
+    height: 80px;
+}
+.searchbar{
+    display: flex;
+    padding:10px 0;
+}
+.poke-searchbar{
+    border: 3px solid #e91d26;
+    height: 40px;
+    width: 200px;
+    border-radius: 50px 0 0 50px;
+    padding: 0 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+.searchbar-button{
+    border: 3px solid #e91d26;
+    background: #e91d26;
+    color: white;
+    height: 46px;
+    border-radius: 0 50px 50px 0;
+    padding: 0 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+.searchbar-button img{
+    height: 20px;
+    width: 20px;
+}
+.poke-pokedex{
+    border: 3px solid #e91d26;
+    height: 40px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 0 10px;
+    background: white;
+    font-family: 'Righteous', cursive;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    margin : 10px 0;
+    transition: 0.6s;
+}
+input[type="text"]:focus {
+    outline:none;
+}
+select:focus {
+    outline:none;
+}
+button:focus{
+    outline: none;
+}
+.poke-filter-type{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.type-container{
+    padding: 8px 0;
+}
+.poke-select{
+    display: flex;
+}
+.poke-select select{
+    border: 3px solid #e91d26;
+    height: 40px;
+    width: 100%;
+    border-radius: 10px 0 0 10px;
+    padding: 0 10px;
+    background: white;
+    font-family: 'Righteous', cursive;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    margin : 10px 0;
+    cursor: pointer;
+    transition: 0.6s;
+}
+.poke-select-button{
+    border: 3px solid #e91d26;
+    height: 40px;
+    border-radius: 0 10px 10px 0;
+    padding: 0 10px;
+    background:#e91d26;
+    color: white;
+    font-family: 'Righteous', cursive;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    margin : 10px 0;
+    cursor: pointer;
+    transition: 0.6s;
+}
+.item-page{
+    margin : 10px 0;
+}
+.item-page-button{
+    height: 40px;
+    /* width: 100%; */
+    border-radius: 10px;
+    padding: 8px;
+    background: #e91d26;
+    color: white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: 0.6s;
+    display: flex;
+    align-items: center;
+}
+.item-page-button img{
+    height: 40px;
+    width: 40px;
+    padding-right: 5px;
+}
+
+
+
+.pokemon{
+    border-radius: 30px;
+    background: #efefef;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+.poke-image{
+    background: #e7e7e7;
+    border-radius: 20px 20px 0 0;
+}
+.poke-image img{
+    width: 100%;
+}
+
+.poke-infos{
+    padding: 2% 10% 10% 10%;
+}
+
+.poke-id{
+    color: grey;
+    padding-left: 5%;
+}
+
+.poke-name{
+    font-size : 30px;
+    color: #3b3b3b;
+    padding: 8% 5%;
+}
+
+.poke-type{
+    display: flex;
+    justify-content: space-between;
+}
+.type{
+    padding: 8px;
+    background: yellow;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 110px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5)
+}
+
+.normal{background:#a7a99d ;}
+.grass{background: #79b05f;}
+.poison{background:#a46a94;}
+.psychic{background:#e473a1;}
+.ground{background:#cfb063;}
+.ice{background:#7dc9e9;}
+.fire{background:#e7624f;}
+.rock{background:#b5a66f;}
+.dragon{background:#827bdc;}
+.water{background:#4c9be8;}
+.bug{background:#acb14a;}
+.fighting{background:#aa664e;}
+.shadow{background:#7578bb;}
+.flying{background:#6f95e3;}
+.electric{background:#e9c15e;}
+.steel{background:#abadba;}
+.dark{background:#8a6b57;}
+.fairy{background:#daa6d7;}
+
+.click{
+    cursor: pointer;
+}
+
+.poke-pokedex:hover{
+    background:#e91d26;
+    color: white;
+}
+
+</style>
