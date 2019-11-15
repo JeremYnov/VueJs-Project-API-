@@ -13,7 +13,7 @@ export default new Router({
             component: HelloWorld
         },
         {
-            path: '/pokedex',
+            path: '/pokedex/:id',
             name: 'Pokedex',
             component: Pokedex
         }
