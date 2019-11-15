@@ -18,6 +18,11 @@
 
 
 <style>
+*{
+ margin: 0;
+ padding: 0;
+}
+
 nav{
     position: fixed;
     width: 100%;
