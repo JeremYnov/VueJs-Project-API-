@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue/cli": "^4.0.5",
     "axios": "^0.19.0",
     "core-js": "^3.3.2",
     "vue": "^2.6.10",
@@ -44,5 +45,17 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "```\r npm install\r ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeremYnov/Poke-projet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeremYnov/Poke-projet/issues"
+  },
+  "homepage": "https://github.com/JeremYnov/Poke-projet#readme"
 }
