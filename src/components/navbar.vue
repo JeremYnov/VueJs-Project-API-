@@ -3,9 +3,9 @@
         <header>
     <nav>
         <ul id="menu">
-            <li class="pokedex"><router-link to="/pokedex/1"><a>pokedex</a></router-link></li>
+            <li class="pokedex"><router-link to="/pokedex/1"><a>Pokedex</a></router-link></li>
             <img src="https://media.tenor.com/images/fe61dc2b7ef08a538b906eced7fa5cb5/tenor.gif" alt="">
-            <li class="pokebattle"><a href="pokebattle.php">Pokébattle</a></li>
+            <li class="pokebattle"><router-link to="/pokeitem"><a>PokeItem</a></router-link></li>
         </ul>
     </nav>
 </header>

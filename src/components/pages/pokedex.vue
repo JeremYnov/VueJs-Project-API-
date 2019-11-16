@@ -311,7 +311,8 @@ export default {
         },
 
         page_filter(index) {
-            this.$router.push(`/pokedex/${index}`)
+            this.$router.push(`/${index}`)
+            window.location.reload()
         }
 
 
