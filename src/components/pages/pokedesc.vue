@@ -3,8 +3,8 @@
     <div id="app" class="poke-desc-content-container center">
       <div class="poke-desc-container">
         <div class="poke-desc-wrapper">
-          <a href></a>
-          <a href></a>
+          <a @click="PreviousPokemon()">Pokemon Précédent</a>
+          <a @click="NextPokemon()">Pokemon Suivant</a>
           <div class="poke-desc">
             <div class="poke-image">
               <img :src="infoPokemon.image" alt />
@@ -413,11 +413,24 @@ export default {
               });
             });
           });
-          //FIN DE LA PARTIE AJOUTEE
         });
     });
-  }
+  },
+  methods: {
+    PreviousPokemon(){
+        this.$router.push(`/pokedesc/${this.id - 1}`);
+        window.location.reload(); 
+    },
+    NextPokemon(){
+        this.$router.push(`/pokedesc/${this.id + 1}`);
+        window.location.reload(); 
+    }
+}
+  
 };
+
+
+    
 </script>
 <style>
 * {
