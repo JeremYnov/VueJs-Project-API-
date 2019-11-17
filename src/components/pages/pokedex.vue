@@ -230,7 +230,7 @@ export default {
             axios
               .get(`https://pokeapi.co/api/v2/pokemon/${index}`)
               .then(async result => {
-                  await sleep(7000)
+                  await sleep(6000)
                   this.loading = false
                 if (result.status != 200) {
                   window.location.replace("error.php");
