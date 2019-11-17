@@ -48,7 +48,7 @@ nav #menu{
     align-items: center;
     background: #313131;
     border-radius: 0 0 20px 20px;
-    
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 #menu img{

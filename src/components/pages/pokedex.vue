@@ -9,16 +9,6 @@
                         <img src="../../assets/icons/icon-pokeball.png" alt="">
                     </div>
 
-                    <div v-if="page < 4">
-                        <button class="page" v-for="n in 5" :key=" n + '-button1'" @click="page_filter(n)"> {{ n }} </button>
-                    </div>
-                    <div v-else>
-                        <div v-for="nb in (page + 2)" :key=" nb + '-button2'">
-                            <button class="page"  v-if="nb >= (page - 2)" v-on:click="page_filter(nb)"> {{ nb }} </button>
-                        </div>
-                        
-                    </div>
-
                     <div class="searchbar">
                         <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar">
                         <button v-on:click="filter(100000000000)" class="searchbar-button click"><img src="assets/icons/icons8-chercher-40.png" alt=""></button>
@@ -118,6 +108,14 @@
                         </div>
                     </div>
                 </div>
+                    <div v-if="page < 4">
+                        <button class="page click" v-for="n in 5" :key=" n + '-button1'" @click="page_filter(n)"> {{ n }} </button>
+                    </div>
+                    <div v-else>
+                        <div v-for="nb in (page + 2)" :key=" nb + '-button2'">
+                            <button class="page click"  v-if="nb >= (page - 2)" v-on:click="page_filter(nb)"> {{ nb }} </button>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -540,6 +538,15 @@ button:focus{
 .poke-pokedex:hover{
     background:#e91d26;
     color: white;
+}
+.page{
+    cursor: pointer;
+    margin: 10px;
+    padding: 8px;
+    border: 3px solid red;
+    border-radius: 15%;
+    background: none;
+    text-align: center
 }
 
 </style>
