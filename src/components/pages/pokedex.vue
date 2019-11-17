@@ -56,7 +56,7 @@
 
                 <div v-if="FilterCheck == false">
                     <div class="poke-wrapper">
-                        <div v-on:click="url(value.id)" v-for="(value, count) in filterPage" :key=" count + '-value'" class="pokemon">
+                        <div v-on:click="url(value.id)" v-for="(value, count) in filterPage" :key=" count + '-value'" class="pokemon click">
 
                             <a v-bind:href="urlPokemon">
                                 <div class="poke-image">
@@ -89,7 +89,7 @@
 
                 <div v-if="FilterCheck == true">
                     <div class="poke-wrapper">
-                        <div v-on:click="url(value.id)" v-for="value in filterName" :key="value" class="pokemon">
+                        <div v-on:click="url(value.id)" v-for="value in filterName" :key="value" class="pokemon click">
                             <a v-bind:href="urlPokemon">
                                 <div class="poke-image">
                                     <img :src="value.image" alt="">
@@ -130,7 +130,6 @@ import axios from 'axios'
 export default {
     data() {
     return {
-        urlPokemon: '',
         infoPokemon: [],
         namePokemon: [],
         typefilter: ["fire", "poison", "normal", "fighting", "flying", "ground", "rock", "bug", "steel", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "shadow"],
@@ -202,7 +201,8 @@ export default {
 
     methods: {
         url(index) {
-            this.urlPokemon = `http://localhost/Poke-projet/pokemon_desc.php?id=${index}`
+            this.$router.push(`/pokedesc/${index}`)
+            window.location.reload()
         },
 
         pokedex() {
