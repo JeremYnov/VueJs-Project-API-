@@ -149,7 +149,7 @@
               </div>
             </div>
           </div>
-          <div v-if="page < 4">
+          <div class="page-container" v-if="page < 4">
             <button
               class="page click"
               v-for="n in 5"
@@ -157,7 +157,7 @@
               @click="page_filter(n)"
             >{{ n }}</button>
           </div>
-          <div v-else>
+          <div class="page-container" v-else>
             <div v-for="nb in (page + 2)" :key=" nb + '-button2'">
               <button
                 class="page click"
@@ -677,5 +677,14 @@ button:focus {
   border-radius: 15%;
   background: none;
   text-align: center;
+  transition: 0.5s;
+}
+.page-container{
+    display: flex;
+    justify-content: center;
+}
+.page:hover {
+color: white;
+  background: red;
 }
 </style>
