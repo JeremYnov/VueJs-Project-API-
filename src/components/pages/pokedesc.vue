@@ -111,7 +111,7 @@
             </div>
 
             <div class="arrow" v-if="typeof(secondEvolutionName.name)!='undefined'">
-              <img src="assets/icons/icons8-chevron-droit-50.png" alt />
+              <img src="../../assets/icons/icons8-chevron-droit-50.png" alt />
             </div>
 
             <div class="second-evolution" v-if="typeof(secondEvolutionName.name)!='undefined'">
@@ -133,7 +133,7 @@
             </div>
 
             <div class="arrow" v-if="typeof(lastEvolutionName.name)!='undefined'">
-              <img src="assets/icons/icons8-chevron-droit-50.png" alt />
+              <img src="../../assets/icons/icons8-chevron-droit-50.png" alt />
             </div>
 
             <div class="last-evolution" v-if="typeof(lastEvolutionName.name)!='undefined'">
@@ -420,6 +420,10 @@ export default {
 };
 </script>
 <style>
+* {
+  padding: 0;
+  margin: 0;
+}
 .poke-desc-container {
   padding: 5.5rem 1.5rem 0 0;
   max-width: 70%;

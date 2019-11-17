@@ -6,7 +6,7 @@
             <div id="filter" class="poke-filter">
                 <div class="poke-filter-container">
                     <div class="poke-logo-filter center">
-                        <img src="assets/icons/icon-pokeball.png" alt="">
+                        <img src="../../assets/icons/icon-pokeball.png" alt="">
                     </div>
 
                     <div v-if="page < 4">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="item-page center">
-                        <a href="pokemon_item.php" class="item-page-button"><img src="assets/icons/icons8-pokebag-50.png" alt=""> Voir les items</a>
+                        <a href="pokemon_item.php" class="item-page-button"><img src="../../assets/icons/icons8-pokebag-50.png" alt=""> Voir les items</a>
                     </div>
 
                 </div>
@@ -59,19 +59,19 @@
                         <div v-on:click="url(value.id)" v-for="(value, count) in filterPage" :key=" count + '-value'" class="pokemon click">
 
                             <a v-bind:href="urlPokemon">
-                                <div class="poke-image">
+                                <div class="pokedex-image">
                                     <img :src="value.image" alt="">
                                 </div>
                                 <div class="poke-infos capitalize">
-                                    <div class="poke-id">
+                                    <div class="pokedex-id">
                                         <p v-if="value.id < 10">N°00{{ value.id}}</p>
                                         <p v-else-if="value.id <= 100">N°0{{ value.id}}</p>
                                         <p v-else>N°{{ value.id + 1}}</p>
                                     </div>
-                                    <div class="poke-name">
+                                    <div class="pokedex-name">
                                         <p>{{ value.name }}</p>
                                     </div>
-                                    <div class="poke-type">
+                                    <div class="pokedex-type">
                                         <div v-for="(todo, i) in typefilter" :key=" i + '-todo1'"> 
                                             <div v-if=" value.type1 == typefilter[i]" class="type click" v-bind:class="typefilter[i]"> {{ value.type1 }} </div>
                                         </div>
@@ -91,19 +91,19 @@
                     <div class="poke-wrapper">
                         <div v-on:click="url(value.id)" v-for="value in filterName" :key="value" class="pokemon click">
                             <a v-bind:href="urlPokemon">
-                                <div class="poke-image">
+                                <div class="pokedex-image">
                                     <img :src="value.image" alt="">
                                 </div>
                                 <div class="poke-infos capitalize">
-                                    <div class="poke-id">
+                                    <div class="pokedex-id">
                                         <p v-if="value.id < 10">N°00{{ value.id }}</p>
                                         <p v-else-if="value.id < 100">N°0{{ value.id }}</p>
                                         <p v-else>N°{{ value.id }}</p>
                                     </div>
-                                    <div class="poke-name">
+                                    <div class="pokedex-name">
                                         <p>{{ value.name }}</p>
                                     </div>
-                                    <div class="poke-type">
+                                    <div class="pokedex-type">
                                         <div v-for="(todo, i) in typefilter" :key=" i + '-todo3'">
                                              <div  v-if=" value.type1 == typefilter[i]" class="type click" v-bind:class="typefilter[i]"> {{ value.type1 }} </div>
                                         </div>
@@ -477,11 +477,11 @@ button:focus{
     background: #efefef;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
-.poke-image{
+.pokedex-image{
     background: #e7e7e7;
     border-radius: 20px 20px 0 0;
 }
-.poke-image img{
+.pokedex-image img{
     width: 100%;
 }
 
@@ -489,18 +489,18 @@ button:focus{
     padding: 2% 10% 10% 10%;
 }
 
-.poke-id{
+.pokedex-id{
     color: grey;
     padding-left: 5%;
 }
 
-.poke-name{
+.pokedex-name{
     font-size : 30px;
     color: #3b3b3b;
     padding: 8% 5%;
 }
 
-.poke-type{
+.pokedex-type{
     display: flex;
     justify-content: space-between;
 }
