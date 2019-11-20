@@ -5,17 +5,12 @@
         <ul id="menu">
             <li class="pokedex"><router-link to="/pokedex/1"><a>Pokedex</a></router-link></li>
             <img src="https://media.tenor.com/images/fe61dc2b7ef08a538b906eced7fa5cb5/tenor.gif" alt="">
-            <li class="pokebattle"><router-link to="/pokeitem"><a>PokeItem</a></router-link></li>
+            <li class="pokeitem"><router-link to="/pokeitem"><a>PokeItem</a></router-link></li>
         </ul>
     </nav>
 </header>
     </div>
 </template>
-
-
-
-
-
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
@@ -66,7 +61,7 @@ nav #menu{
 .pokedex{
     border-right: 0.2px solid rgb(80, 80, 80);
 }
-.pokebattle{
+.pokeitem{
     border-left: 0.2px solid rgb(80, 80, 80);
 }
 

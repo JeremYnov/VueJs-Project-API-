@@ -13,9 +13,7 @@
 
             <div class="searchbar">
               <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar" />
-              <button v-on:click="filter(100000000000)" class="searchbar-button click">
-                <img src="assets/icons/icons8-chercher-40.png" alt />
-              </button>
+              <button v-on:click="filter(100000000000)" class="searchbar-button click"><i class="fas fa-search"></i> </button>
             </div>
 
             <p
