@@ -25,7 +25,6 @@
     background-image: url("../assets/pattern.jpg");
     min-height: 100vh;
     width: 100%;
-    padding-bottom: 30px;
 }
 
 nav{

@@ -147,7 +147,6 @@
               </div>
             </div>
           </a>
-            
           </div>
         </div>
       </div>
@@ -331,10 +330,10 @@
             this.infoPokemonSpecies = {
               name: result.data.names[6].name,
               description:
-                result.data.flavor_text_entries[this.indextable[0]].flavor_text +
-                " " +
-                result.data.flavor_text_entries[this.indextable[1]].flavor_text +
-                " " +
+                result.data.flavor_text_entries[this.indextable[0]].flavor_text 
+              //   + " " +
+              //   result.data.flavor_text_entries[this.indextable[1]].flavor_text +
+                + " " +
                 result.data.flavor_text_entries[this.indextable[2]].flavor_text,
               categorie: result.data.genera[6].genus
             };
@@ -535,80 +534,81 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
   }
 
-  .normal {
-    background: #a7a99d;
-  }
-
-  .grass {
-    background: #79b05f;
-  }
-
-  .poison {
-    background: #a46a94;
-  }
-
-  .psychic {
-    background: #e473a1;
-  }
-
-  .ground {
-    background: #cfb063;
-  }
-
-  .ice {
-    background: #7dc9e9;
-  }
-
-  .fire {
-    background: #e7624f;
-  }
-
-  .rock {
-    background: #b5a66f;
-  }
-
-  .dragon {
-    background: #827bdc;
-  }
-
-  .water {
-    background: #4c9be8;
-  }
-
-  .bug {
-    background: #acb14a;
-  }
-
-  .fighting {
-    background: #aa664e;
-  }
-
-  .shadow {
-    background: #7578bb;
-  }
-
-  .flying {
-    background: #6f95e3;
-  }
-
-  .electric {
-    background: #e9c15e;
-  }
-
-  .steel {
-    background: #abadba;
-  }
-
-  .dark {
-    background: #8a6b57;
-  }
-
-  .fairy {
-    background: #daa6d7;
-  }
-
+ .normal {
+  background: #a7a99d;
+  border: 2px solid #8f9281;
+}
+.grass {
+  background: #79b05f;
+  border: 2px solid #609348;
+}
+.poison {
+  background: #a46a94;
+  border: 2px solid #885379;
+}
+.psychic {
+  background: #e473a1;
+  border: 2px solid #dc4782;
+}
+.ground {
+  background: #cfb063;
+  border: 2px solid #c39d3c;
+}
+.ice {
+  background: #7dc9e9;
+  border: 2px solid #51b6e1;
+}
+.fire {
+  background: #e7624f;
+  border: 2px solid #e13c23;
+}
+.rock {
+  background: #b5a66f;
+  border: 2px solid #9e8e51;
+}
+.dragon {
+  background: #827bdc;
+  border: 2px solid #5a52d1;
+}
+.water {
+  background: #4c9be8;
+  border: 2px solid #1d7fe2;
+}
+.bug {
+  background: #acb14a;
+  border: 2px solid #888c3b;
+}
+.fighting {
+  background: #aa664e;
+  border: 2px solid #88523f;
+}
+.shadow {
+  background: #7578bb;
+  border: 2px solid #5458ab;
+}
+.flying {
+  background: #6f95e3;
+  border: 2px solid #4476da;
+}
+.electric {
+  background: #e9c15e;
+  border: 2px solid #e3b031;
+}
+.steel {
+  background: #abadba;
+  border: 2px solid #8f92a3;
+}
+.dark {
+  background: #8a6b57;
+  border: 2px solid #6b5343;
+}
+.fairy {
+  background: #daa6d7;
+  border: 2px solid #ca81c7;
+}
   .ghost {
     background: #817a8a;
+    border: 2px solid #68626f;
   }
 
   .pokevolution {

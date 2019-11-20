@@ -1,8 +1,8 @@
 <template>
   <section class="background">
-      <div v-if="loading == true">
-              <ProcessBar/>
-      </div>
+    <div v-if="loading == true">
+      <ProcessBar />
+    </div>
     <div v-else id="pokedex">
       <div class="pokedex-content-container">
         <div id="filter" class="poke-filter">
@@ -13,7 +13,9 @@
 
             <div class="searchbar">
               <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar" />
-              <button v-on:click="filter(100000000000)" class="searchbar-button click"><i class="fas fa-search"></i> </button>
+              <button v-on:click="filter(100000000000)" class="searchbar-button click">
+                <i class="fas fa-search"></i>
+              </button>
             </div>
 
             <p
@@ -212,7 +214,7 @@ export default {
   },
 
   mounted: function() {
-      let sleep = milliseconds => {
+    let sleep = milliseconds => {
       return new Promise(resolve => setTimeout(resolve, milliseconds));
     };
     axios
@@ -228,8 +230,8 @@ export default {
             axios
               .get(`https://pokeapi.co/api/v2/pokemon/${index}`)
               .then(async result => {
-                  await sleep(6000)
-                  this.loading = false
+                await sleep(6000);
+                this.loading = false;
                 if (result.status != 200) {
                   window.location.replace("error.php");
                 }
@@ -425,7 +427,7 @@ a {
   display: grid;
   grid-template-columns: 2fr 8fr;
   grid-column-gap: 1.5rem;
-  padding: 5.5rem 1.5rem 0 0;
+  padding: 5.5rem 1.5rem 1.5rem 0;
   margin-left: auto;
   margin-right: auto;
   max-width: 1440px;
@@ -606,57 +608,79 @@ button:focus {
 
 .normal {
   background: #a7a99d;
+  border: 2px solid #8f9281;
 }
 .grass {
   background: #79b05f;
+  border: 2px solid #609348;
 }
 .poison {
   background: #a46a94;
+  border: 2px solid #885379;
 }
 .psychic {
   background: #e473a1;
+  border: 2px solid #dc4782;
 }
 .ground {
   background: #cfb063;
+  border: 2px solid #c39d3c;
 }
 .ice {
   background: #7dc9e9;
+  border: 2px solid #51b6e1;
 }
 .fire {
   background: #e7624f;
+  border: 2px solid #e13c23;
 }
 .rock {
   background: #b5a66f;
+  border: 2px solid #9e8e51;
 }
 .dragon {
   background: #827bdc;
+  border: 2px solid #5a52d1;
 }
 .water {
   background: #4c9be8;
+  border: 2px solid #1d7fe2;
 }
 .bug {
   background: #acb14a;
+  border: 2px solid #888c3b;
 }
 .fighting {
   background: #aa664e;
+  border: 2px solid #88523f;
 }
 .shadow {
   background: #7578bb;
+  border: 2px solid #5458ab;
 }
 .flying {
   background: #6f95e3;
+  border: 2px solid #4476da;
 }
 .electric {
   background: #e9c15e;
+  border: 2px solid #e3b031;
 }
 .steel {
   background: #abadba;
+  border: 2px solid #8f92a3;
 }
 .dark {
   background: #8a6b57;
+  border: 2px solid #6b5343;
 }
 .fairy {
   background: #daa6d7;
+  border: 2px solid #ca81c7;
+}
+.ghost {
+  background: #817a8a;
+  border: 2px solid #68626f;
 }
 
 .click {
@@ -677,12 +701,15 @@ button:focus {
   text-align: center;
   transition: 0.5s;
 }
-.page-container{
-    display: flex;
-    justify-content: center;
+.page-container {
+  display: flex;
+  justify-content: center;
 }
 .page:hover {
-color: white;
+  color: white;
   background: red;
+}
+.fa-search {
+  font-size: 20px;
 }
 </style>
