@@ -37,6 +37,9 @@
                   <p>{{ infoPokemonSpecies.name }}</p>
                 </div>
               </div>
+              <div class="poke-categorie center">
+                <p>{{ infoPokemonSpecies.categorie }}</p>
+              </div>
 
               <div class="poke-description">
                 <p>{{ infoPokemonSpecies.description }}</p>
@@ -68,33 +71,31 @@
                       <h2>Faiblesses</h2>
                     </div>
                     <div class="weaknesses text-center">
-                      <div v-for="todo in weaknesstable" :key="todo" class="type click" v-bind:class="todo">{{ todo }}
+                      <div v-for="todo in weaknesstable" :key="todo" class="type" v-bind:class="todo">{{ todo }}
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="poke-strength center">
+                <div class="poke-strength center capitalize">
                   <div class="poke-strength-container">
                     <div class="poke-strength-title text-center">
                       <h2>Forces</h2>
                     </div>
                     <div class="strengths text-center">
-                      <div v-for="i in strengthtable" :key="i" class="type click capitalize" v-bind:class="i">{{ i }}
+                      <div v-for="i in strengthtable" :key="i" class="type" v-bind:class="i">{{ i }}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="poke-categorie">
-                <p>{{ infoPokemonSpecies.categorie }}</p>
-              </div>
-              <p v-if="infoPokemon.taille <= 9">Taille: 0.{{ infoPokemon.taille }} m</p>
+              
+              <!-- <p v-if="infoPokemon.taille <= 9">Taille: 0.{{ infoPokemon.taille }} m</p>
               <p v-else-if="infoPokemon.taille <= 99">Taille: {{ infoPokemon.id }} m</p>
               <p v-else>Taille: {{ infoPokemon.taille}} m</p>
 
               <p v-if="infoPokemon.poids <= 9">Poids: 0.{{ infoPokemon.poids }} kg</p>
               <p v-else-if="infoPokemon.poids <= 99">Poids: {{ infoPokemon.poids }} kg</p>
-              <p v-else>Poids: {{ infoPokemon.poids}} kg</p>
+              <p v-else>Poids: {{ infoPokemon.poids}} kg</p> -->
             </div>
           </div>
           <div class="pokevolution">
@@ -482,7 +483,7 @@
   }
 
   .poke-id-name {
-    padding-bottom: 5%;
+    padding-bottom: 1%;
   }
 
   .poke-id {
@@ -495,10 +496,15 @@
     color: #3b3b3b;
     font-size: 30px;
   }
+  .poke-categorie{
+    padding-bottom: 5%;
+    color: #3b3b3b;
+  }
 
   .poke-description {
     font-size: 18px;
     text-align: justify;
+    padding-bottom: 5%;
   }
 
   .poke-type-container {
