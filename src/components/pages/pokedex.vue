@@ -10,7 +10,7 @@
             <div class="poke-logo-filter center">
               <img src="../../assets/icons/icon-pokeball.png" alt />
             </div>
-
+               <ButtonPage/>
             <div class="searchbar">
               <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar" />
               <button v-on:click="filter(100000000000)" class="searchbar-button click">
@@ -149,23 +149,7 @@
               </div>
             </div>
           </div>
-          <div class="page-container" v-if="page < 4">
-            <button
-              class="page click"
-              v-for="n in 5"
-              :key=" n + '-button1'"
-              @click="page_filter(n)"
-            >{{ n }}</button>
-          </div>
-          <div class="page-container" v-else>
-            <div v-for="nb in (page + 2)" :key=" nb + '-button2'">
-              <button
-                class="page click"
-                v-if="nb >= (page - 2)"
-                v-on:click="page_filter(nb)"
-              >{{ nb }}</button>
-            </div>
-          </div>
+           <ButtonPage/>
         </div>
       </div>
     </div>
@@ -175,9 +159,11 @@
 <script>
 import axios from "axios";
 import ProcessBar from "@/components/bar/ProcessBar";
+import ButtonPage from "@/components/filtre/buttonPage";
 export default {
   components: {
-    ProcessBar
+    ProcessBar,
+    ButtonPage
   },
   data() {
     return {
@@ -691,24 +677,9 @@ button:focus {
   background: #e91d26;
   color: white;
 }
-.page {
-  cursor: pointer;
-  margin: 10px;
-  padding: 8px;
-  border: 3px solid red;
-  border-radius: 15%;
-  background: none;
-  text-align: center;
-  transition: 0.5s;
-}
-.page-container {
-  display: flex;
-  justify-content: center;
-}
-.page:hover {
-  color: white;
-  background: red;
-}
+
+
+
 .fa-search {
   font-size: 20px;
 }
