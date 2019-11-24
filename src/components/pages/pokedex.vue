@@ -10,29 +10,16 @@
             <div class="poke-logo-filter center">
               <img src="../../assets/icons/icon-pokeball.png" alt />
             </div>
-               <ButtonPage/>
-            <p> {{FilterCheck}} </p>
-            <Search :FilterCheck="FilterCheck" :filterName="filterName" :infoPokemon="infoPokemon"/>
+            <ButtonPage />
+            <Search
+              :FilterCheck="FilterCheck"
+              :filterName="filterName"
+              :infoPokemon="infoPokemon"
+              v-on:changeFilterCheck="updateFilterCheck"
+              v-on:fillFilterName="updateFilterName"
+            />
 
-            <!-- <div class="searchbar">
-              <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar" />
-              <button v-on:click="filter(100000000000)" class="searchbar-button click">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-
-            <p
-              v-if="FilterCheck == false"
-            >Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
-
-            <button
-              v-on:click="pokedex()"
-              v-else
-              class="poke-pokedex click"
-            >Afficher le pokedex entier</button> -->
-
-
-
+           
 
             <div class="poke-select">
               <select v-model="trie">
@@ -53,7 +40,7 @@
                 class="type-container center"
               >
                 <div
-                  v-on:click="filter(index)"
+                  v-on:click="filtertype(index)"
                   class="type click"
                   v-bind:class="typefilter[index]"
                 >{{ typefilter[index] }}</div>
@@ -155,7 +142,7 @@
               </div>
             </div>
           </div>
-           <ButtonPage/>
+          <ButtonPage />
         </div>
       </div>
     </div>
@@ -165,17 +152,15 @@
 <script>
 import axios from "axios";
 import ProcessBar from "@/components/bar/ProcessBar";
-import ButtonPage from "@/components/filtre/buttonPage";
-import Search from "@/components/filtre/search";
+import ButtonPage from "@/components/filter/buttonPage";
+import Search from "@/components/filter/searchBar";
 export default {
   components: {
     ProcessBar,
     ButtonPage,
     Search
   },
-  props: {
-
-  },
+  props: {},
   data() {
     return {
       infoPokemon: [],
@@ -282,6 +267,49 @@ export default {
   },
 
   methods: {
+    updateFilterCheck(levelFilterCheck) {
+      this.FilterCheck = levelFilterCheck;
+    },
+
+    updateFilterName(levelFilterName) {
+      this.filterName = levelFilterName;
+    },
+    
+    filtertype(i){
+      this.filterName = [];
+      let validate = 0;
+      let info;
+      for (let index = 0; index < this.infoPokemon.length; index++) {
+          if (
+            this.infoPokemon[index].type1 == this.typefilter[i] ||
+            this.infoPokemon[index].type2 == this.typefilter[i]
+          ) {
+            this.FilterCheck = true;
+            validate = 1;
+            if (this.infoPokemon[index].type2) {
+              info = {
+                name: this.infoPokemon[index].name,
+                id: this.infoPokemon[index].id,
+                image: this.infoPokemon[index].image,
+                type1: this.infoPokemon[index].type1,
+                type2: this.infoPokemon[index].type2
+              };
+            } else {
+              info = {
+                name: this.infoPokemon[index].name,
+                id: this.infoPokemon[index].id,
+                image: this.infoPokemon[index].image,
+                type1: this.infoPokemon[index].type1
+              };
+            }
+            this.filterName.push(info);
+          }
+      }
+      if (validate == 0) {
+        this.FilterCheck = false;
+      }
+    },
+
     url(index) {
       this.$router.push(`/pokedesc/${index}`);
       window.location.reload();
@@ -581,6 +609,4 @@ button:focus {
 .click {
   cursor: pointer;
 }
-
-
 </style>

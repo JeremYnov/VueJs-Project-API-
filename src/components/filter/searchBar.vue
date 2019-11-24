@@ -1,17 +1,18 @@
 <template>
+<div>
   <div class="searchbar">
     <input type="text" v-model="name" placeholder="Rechercher..." class="poke-searchbar" />
-    <button v-on:click="filter(100000000000)" class="searchbar-button click">
+    <button v-on:click="filter()" class="searchbar-button click">
       <i class="fas fa-search"></i>
     </button>
-    <p>{{  FilterCheck }}</p>
-
+</div>
     <div>
       <p
         v-if="FilterCheck == false"
       >Aucun Pokémon selectionné (ne pas oublier la majuscule pour la premiere lettre)</p>
       <button v-on:click="pokedex()" v-else class="poke-pokedex click">Afficher le pokedex entier</button>
     </div>
+  
   </div>
 </template>
 
@@ -20,53 +21,28 @@
 export default {
   data() {
     return {
-      name: "",
-      
+      name: ""
     };
   },
+
   props: {
     infoPokemon: Array,
     FilterCheck: Boolean,
-    filterName: Array,
+    filterName: Array
   },
-  mounted: function() {},
 
   methods: {
-    filter(i) {
+    filter() {
       this.filterName = [];
       let validate = 0;
       let info;
       for (let index = 0; index < this.infoPokemon.length; index++) {
-        if (i != 100000000000) {
-          if (
-            this.infoPokemon[index].type1 == this.typefilter[i] ||
-            this.infoPokemon[index].type2 == this.typefilter[i]
-          ) {
-            this.FilterCheck = true;
-            validate = 1;
-            if (this.infoPokemon[index].type2) {
-              info = {
-                name: this.infoPokemon[index].name,
-                id: this.infoPokemon[index].id,
-                image: this.infoPokemon[index].image,
-                type1: this.infoPokemon[index].type1,
-                type2: this.infoPokemon[index].type2
-              };
-            } else {
-              info = {
-                name: this.infoPokemon[index].name,
-                id: this.infoPokemon[index].id,
-                image: this.infoPokemon[index].image,
-                type1: this.infoPokemon[index].type1
-              };
-            }
-            this.filterName.push(info);
-          }
-        } else if (
+        if (
           this.infoPokemon[index].name.indexOf(this.name) === 0 ||
           this.infoPokemon[index].id == this.name
         ) {
           this.FilterCheck = true;
+          this.$emit("changeFilterCheck", true);
           validate = 1;
           if (this.infoPokemon[index].type2) {
             info = {
@@ -87,13 +63,16 @@ export default {
           this.filterName.push(info);
         }
       }
+      this.$emit("fillFilterName", this.filterName);
       if (validate == 0) {
         this.FilterCheck = false;
+        this.$emit("changeFilterCheck", false);
       }
     },
 
     pokedex() {
       this.FilterCheck = false;
+      this.$emit("changeFilterCheck", false);
     }
   }
 };
