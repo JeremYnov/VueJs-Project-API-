@@ -231,11 +231,6 @@ export default {
     updateFilterName(levelFilterName) {
       this.filterName = levelFilterName;
     },
-
-    url(index) {
-      this.$router.push(`/pokedesc/${index}`);
-      window.location.reload();
-    }
   }
 };
 </script>
