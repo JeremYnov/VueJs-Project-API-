@@ -33,7 +33,7 @@ export default {
 
   methods: {
     filter() {
-      this.filterName = [];
+      let filterNameCompo = [];
       let validate = 0;
       let info;
       for (let index = 0; index < this.infoPokemon.length; index++) {
@@ -41,7 +41,6 @@ export default {
           this.infoPokemon[index].name.indexOf(this.name) === 0 ||
           this.infoPokemon[index].id == this.name
         ) {
-          this.FilterCheck = true;
           this.$emit("changeFilterCheck", true);
           validate = 1;
           if (this.infoPokemon[index].type2) {
@@ -60,12 +59,11 @@ export default {
               type1: this.infoPokemon[index].type1
             };
           }
-          this.filterName.push(info);
+          filterNameCompo.push(info);
         }
       }
-      this.$emit("fillFilterName", this.filterName);
+      this.$emit("fillFilterName", filterNameCompo);
       if (validate == 0) {
-        this.FilterCheck = false;
         this.$emit("changeFilterCheck", false);
       }
     },
