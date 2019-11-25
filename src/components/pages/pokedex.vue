@@ -368,11 +368,6 @@ export default {
         }
       }
     },
-
-    page_filter(index) {
-      this.$router.push(`/pokedex/${index}`);
-      window.location.reload();
-    }
   }
 };
 </script>
