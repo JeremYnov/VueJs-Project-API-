@@ -277,19 +277,6 @@
     grid-column-gap: 1.5rem;
   }
 
-  /* .poke-image {
-    background: #e7e7e7;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-  }
-
-  .poke-image img {
-    width: 100%;
-    background: #e7e7e7;
-    border-radius: 20px;
-  } */
-
   .poke-id-name {
     padding-bottom: 1%;
   }
@@ -302,12 +289,6 @@
     padding-bottom: 5%;
     color: #3b3b3b;
   }
-
-  /* .poke-description {
-    font-size: 18px;
-    text-align: justify;
-    padding-bottom: 5%;
-  } */
 
   .poke-type-container {
     padding-bottom: 10px;
@@ -448,21 +429,6 @@
     border-radius: 20px;
   }
 
-  /* .pokevolution-infos-wrapper {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 15px;
-  } */
-
-  /* .pokevolution-id {
-    padding-right: 7px;
-  } */
-
-  /* .evolution-image img {
-    width: 200px;
-    border-top: 1px solid #d4d4d4;
-  } */
-
   .first-evolution,
   .second-evolution,
   .last-evolution {
@@ -474,10 +440,10 @@
 
 
 
-  /* .arrow {
+  .arrow {
     display: flex;
     align-items: center;
-  } */
+  }
   .previous-next-wrapper {
     display: grid;
     grid-template-columns: 50% 50%;
