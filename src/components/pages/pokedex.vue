@@ -1,5 +1,6 @@
 <template>
   <section class="background">
+    <p> {{filterName}} </p>
     <div v-if="loading == true">
       <ProcessBar />
     </div>
@@ -19,33 +20,20 @@
               v-on:fillFilterName="updateFilterName"
             />
 
-           
+            <Trie
+              :FilterCheck="FilterCheck"
+              :filterName="filterName"
+              :infoPokemon="infoPokemon"
+              v-on:changeFilterCheck="updateFilterCheck"
+              v-on:fillFilterName="updateFilterName"
+            />
 
-            <div class="poke-select">
-              <select v-model="trie">
-                <option value="1">Ordre Alphabétique A-Z</option>
-                <option value="2">Ordre Alphabétique Z-A</option>
-                <option value="3">Numéro le plus bas en premier</option>
-                <option value="4">Numéro le plus haut en premier</option>
-              </select>
-              <button
-                v-on:click="trie_pokemon(infoPokemon,filterName)"
-                class="poke-select-button"
-              >Valider</button>
-            </div>
-            <div class="poke-filter-type capitalize">
-              <div
-                v-for="(todo, index) in typefilter"
-                :key=" index + '-todo1'"
-                class="type-container center"
-              >
-                <div
-                  v-on:click="filtertype(index)"
-                  class="type click"
-                  v-bind:class="typefilter[index]"
-                >{{ typefilter[index] }}</div>
-              </div>
-            </div>
+            <type :FilterCheck="FilterCheck"
+              :filterName="filterName"
+              :infoPokemon="infoPokemon"
+              v-on:changeFilterCheck="updateFilterCheck"
+              v-on:fillFilterName="updateFilterName"/>
+
             <div class="item-page center">
               <router-link to="/pokeitem">
                 <a class="item-page-button">
@@ -58,50 +46,12 @@
 
         <div class="poke-container">
           <div v-if="FilterCheck == false">
-            <div class="poke-wrapper">
-              <div
-                v-on:click="url(value.id)"
-                v-for="(value, count) in filterPage"
-                :key=" count + '-value'"
-                class="pokemon click"
-              >
-                <a>
-                  <div class="pokedex-image">
-                    <img :src="value.image" alt />
-                  </div>
-                  <div class="poke-infos capitalize">
-                    <div class="pokedex-id">
-                      <p v-if="value.id < 10">N°00{{ value.id}}</p>
-                      <p v-else-if="value.id <= 100">N°0{{ value.id}}</p>
-                      <p v-else>N°{{ value.id + 1}}</p>
-                    </div>
-                    <div class="pokedex-name">
-                      <p>{{ value.name }}</p>
-                    </div>
-                    <div class="pokedex-type">
-                      <div v-for="(todo, i) in typefilter" :key=" i + '-todo1'">
-                        <div
-                          v-if=" value.type1 == typefilter[i]"
-                          class="type click"
-                          v-bind:class="typefilter[i]"
-                        >{{ value.type1 }}</div>
-                      </div>
-                      <div v-for="(todo, i) in typefilter" :key=" i + '-todo2'">
-                        <div
-                          v-if=" value.type2 == typefilter[i]"
-                          class="type click"
-                          v-bind:class="typefilter[i]"
-                        >{{ value.type2 }}</div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
+            <Pokedex :filterPage="filterPage" :typefilter="typefilter"/>
           </div>
 
           <div v-if="FilterCheck == true">
-            <div class="poke-wrapper">
+            <modeFilter :filterName="filterName" :typefilter="typefilter"/>
+            <!-- <div class="poke-wrapper">
               <div
                 v-on:click="url(value.id)"
                 v-for="value in filterName"
@@ -140,7 +90,7 @@
                   </div>
                 </a>
               </div>
-            </div>
+            </div> -->
           </div>
           <ButtonPage />
         </div>
@@ -154,11 +104,19 @@ import axios from "axios";
 import ProcessBar from "@/components/bar/ProcessBar";
 import ButtonPage from "@/components/filter/buttonPage";
 import Search from "@/components/filter/searchBar";
+import Trie from "@/components/filter/triePoke";
+import Type from "@/components/filter/typePoke";
+import modeFilter from "@/components/filter/modeFilter";
+import Pokedex from "@/components/filter/pokedexNormal";
 export default {
   components: {
     ProcessBar,
     ButtonPage,
-    Search
+    Search,
+    Trie,
+    Type,
+    modeFilter,
+    Pokedex
   },
   props: {},
   data() {
@@ -187,7 +145,6 @@ export default {
       ],
       filterName: [],
       FilterCheck: false,
-      trie: "",
       page: "",
       filterPage: [],
       loading: true
@@ -274,105 +231,6 @@ export default {
     updateFilterName(levelFilterName) {
       this.filterName = levelFilterName;
     },
-    
-    filtertype(i){
-      this.filterName = [];
-      let validate = 0;
-      let info;
-      for (let index = 0; index < this.infoPokemon.length; index++) {
-          if (
-            this.infoPokemon[index].type1 == this.typefilter[i] ||
-            this.infoPokemon[index].type2 == this.typefilter[i]
-          ) {
-            this.FilterCheck = true;
-            validate = 1;
-            if (this.infoPokemon[index].type2) {
-              info = {
-                name: this.infoPokemon[index].name,
-                id: this.infoPokemon[index].id,
-                image: this.infoPokemon[index].image,
-                type1: this.infoPokemon[index].type1,
-                type2: this.infoPokemon[index].type2
-              };
-            } else {
-              info = {
-                name: this.infoPokemon[index].name,
-                id: this.infoPokemon[index].id,
-                image: this.infoPokemon[index].image,
-                type1: this.infoPokemon[index].type1
-              };
-            }
-            this.filterName.push(info);
-          }
-      }
-      if (validate == 0) {
-        this.FilterCheck = false;
-      }
-    },
-
-    url(index) {
-      this.$router.push(`/pokedesc/${index}`);
-      window.location.reload();
-    },
-
-    trie_pokemon(liste = [], liste_destination = []) {
-      if (this.trie == 4 || this.trie == 3) {
-        for (let i = 0; i < liste.length; i++) {
-          for (let index = 0; index < liste.length; index++) {
-            if (index + 1 != liste.length) {
-              if (liste[index + 1].id > liste[index].id) {
-                let objet = liste[index];
-                liste[index] = liste[index + 1];
-                liste[index + 1] = objet;
-              }
-            }
-          }
-        }
-        if (this.trie == 4) {
-          this.FilterCheck = false;
-          for (let i = 0; i < liste.length; i++) {
-            liste_destination[i] = liste[i];
-          }
-          this.FilterCheck = true;
-        } else {
-          this.FilterCheck = false;
-          for (let i = 0; i < liste.length; i++) {
-            liste_destination[i] = liste[liste.length - 1 - i];
-          }
-          this.FilterCheck = true;
-        }
-      } else {
-        for (let i = 0; i < liste.length; i++) {
-          for (let index = 0; index < liste.length; index++) {
-            if (index + 1 != liste.length) {
-              if (liste[index + 1].name > liste[index].name) {
-                let objet = liste[index];
-                liste[index] = liste[index + 1];
-                liste[index + 1] = objet;
-              }
-            }
-          }
-        }
-        if (this.trie == 2) {
-          this.FilterCheck = false;
-          for (let i = 0; i < liste.length; i++) {
-            liste_destination[i] = liste[i];
-          }
-          this.FilterCheck = true;
-        } else {
-          this.FilterCheck = false;
-          for (let i = 0; i < liste.length; i++) {
-            liste_destination[i] = liste[liste.length - 1 - i];
-          }
-          this.FilterCheck = true;
-        }
-      }
-    },
-
-    page_filter(index) {
-      this.$router.push(`/pokedex/${index}`);
-      window.location.reload();
-    }
   }
 };
 </script>
@@ -429,183 +287,6 @@ select:focus {
 button:focus {
   outline: none;
 }
-.poke-filter-type {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-.type-container {
-  padding: 8px 0;
-}
-.poke-select {
-  display: flex;
-}
-.poke-select select {
-  border: 3px solid #e91d26;
-  height: 40px;
-  width: 100%;
-  border-radius: 10px 0 0 10px;
-  padding: 0 10px;
-  background: white;
-  font-family: "Righteous", cursive;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-  margin: 10px 0;
-  cursor: pointer;
-  transition: 0.6s;
-}
-.poke-select-button {
-  border: 3px solid #e91d26;
-  height: 40px;
-  border-radius: 0 10px 10px 0;
-  padding: 0 10px;
-  background: #e91d26;
-  color: white;
-  font-family: "Righteous", cursive;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-  margin: 10px 0;
-  cursor: pointer;
-  transition: 0.6s;
-}
-.item-page {
-  margin: 10px 0;
-}
-.item-page-button {
-  height: 40px;
-  /* width: 100%; */
-  border-radius: 10px;
-  padding: 8px;
-  background: #e91d26;
-  color: white;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  transition: 0.6s;
-  display: flex;
-  align-items: center;
-}
-.item-page-button img {
-  height: 40px;
-  width: 40px;
-  padding-right: 5px;
-}
-
-.pokemon {
-  border-radius: 30px;
-  background: #efefef;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-}
-.pokedex-image {
-  background: #e7e7e7;
-  border-radius: 20px 20px 0 0;
-}
-.pokedex-image img {
-  width: 100%;
-}
-
-.poke-infos {
-  padding: 2% 10% 10% 10%;
-}
-
-.pokedex-id {
-  color: grey;
-  padding-left: 5%;
-}
-
-.pokedex-name {
-  font-size: 30px;
-  color: #3b3b3b;
-  padding: 8% 5%;
-}
-
-.pokedex-type {
-  display: flex;
-  justify-content: space-between;
-}
-.type {
-  padding: 8px;
-  background: yellow;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 15px;
-  width: 110px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-}
-
-.normal {
-  background: #a7a99d;
-  border: 2px solid #8f9281;
-}
-.grass {
-  background: #79b05f;
-  border: 2px solid #609348;
-}
-.poison {
-  background: #a46a94;
-  border: 2px solid #885379;
-}
-.psychic {
-  background: #e473a1;
-  border: 2px solid #dc4782;
-}
-.ground {
-  background: #cfb063;
-  border: 2px solid #c39d3c;
-}
-.ice {
-  background: #7dc9e9;
-  border: 2px solid #51b6e1;
-}
-.fire {
-  background: #e7624f;
-  border: 2px solid #e13c23;
-}
-.rock {
-  background: #b5a66f;
-  border: 2px solid #9e8e51;
-}
-.dragon {
-  background: #827bdc;
-  border: 2px solid #5a52d1;
-}
-.water {
-  background: #4c9be8;
-  border: 2px solid #1d7fe2;
-}
-.bug {
-  background: #acb14a;
-  border: 2px solid #888c3b;
-}
-.fighting {
-  background: #aa664e;
-  border: 2px solid #88523f;
-}
-.shadow {
-  background: #7578bb;
-  border: 2px solid #5458ab;
-}
-.flying {
-  background: #6f95e3;
-  border: 2px solid #4476da;
-}
-.electric {
-  background: #e9c15e;
-  border: 2px solid #e3b031;
-}
-.steel {
-  background: #abadba;
-  border: 2px solid #8f92a3;
-}
-.dark {
-  background: #8a6b57;
-  border: 2px solid #6b5343;
-}
-.fairy {
-  background: #daa6d7;
-  border: 2px solid #ca81c7;
-}
-.ghost {
-  background: #817a8a;
-  border: 2px solid #68626f;
-}
-
 .click {
   cursor: pointer;
 }

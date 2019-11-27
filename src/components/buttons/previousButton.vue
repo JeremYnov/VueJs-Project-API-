@@ -22,12 +22,14 @@
       this.id = this.id.split("/");
       this.id = this.id[this.id.length - 1];
       this.id = Number(this.id);
-
-      axios
+      if(this.id != 1){
+        axios
         .get(`https://pokeapi.co/api/v2/pokemon-species/${this.id - 1}`)
         .then(result => {
           this.namePreviousPokemon = result.data.names[6].name;
         });
+      }
+      
     },
 
     methods: {
