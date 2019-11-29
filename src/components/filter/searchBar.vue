@@ -32,6 +32,8 @@ export default {
   },
 
   methods: {
+    // filter => permet de taper le nom d'un pokemon ou son id et de le trouver
+    // fonction qui marche en like, exemple tu tape "A" => tout les pokemons commençant par A s'afficheront
     filter() {
       let filterNameCompo = [];
       let validate = 0;
@@ -67,7 +69,8 @@ export default {
         this.$emit("changeFilterCheck", false);
       }
     },
-
+    // pokedex => si on clique sur le bouton retour au pokedex
+    // alors on enleve le mode filtre
     pokedex() {
       this.FilterCheck = false;
       this.$emit("changeFilterCheck", false);

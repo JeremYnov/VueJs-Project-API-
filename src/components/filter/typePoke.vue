@@ -44,6 +44,7 @@ export default {
   },
 
   methods: {
+    // filtertype => permet de trier les pokemons par type
     filtertype(i) {
       let filterNameCompo = [];
       let validate = 0;
