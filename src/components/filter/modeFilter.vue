@@ -1,4 +1,6 @@
 <template>
+<!-- Component pas utlisé suite à un bug -->
+<div v-if="FilterCheck == true">
   <div class="poke-wrapper">
     <div v-on:click="url(value.id)" v-for="value in filterName" :key="value.id" class="pokemon click">
       <a>
@@ -33,6 +35,7 @@
         </div>
       </a>
     </div>
+  </div>
   </div>
 </template>
 <script>

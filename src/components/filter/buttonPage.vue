@@ -1,4 +1,5 @@
 <template>
+<!-- affichage des pages avec 5 numero de pages qui s'affiche -->
   <div class="page-container" v-if="page < 4">
     <button class="page click" v-for="n in 5" :key=" n + '-button1'" @click="page_filter(n)">{{ n }}</button>
   </div>
@@ -18,6 +19,7 @@ export default {
     };
   },
   mounted: function() {
+    // page => recupere le numero de la page dans le get
     this.page = window.location.href;
     this.page = this.page.split("/");
     this.page = this.page[this.page.length - 1];
@@ -25,6 +27,7 @@ export default {
   },
 
   methods: {
+    // si on clique sur un numero de page ça renvois ce numero en get et donc ça change les 21 pokemons 
     page_filter(index) {
       this.$router.push(`/pokedex/${index}`);
       window.location.reload();

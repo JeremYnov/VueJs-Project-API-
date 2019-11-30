@@ -26,6 +26,7 @@ export default {
   },
 
   methods: {
+    // trie_pokemon => choix entre 4 possibilité pour trier par ordre croissant ou decroissant 
     trie_pokemon(liste = [], liste_destination = []) {
       this.$emit("changeFilterCheck", false);
       if (this.trie == 4 || this.trie == 3) {

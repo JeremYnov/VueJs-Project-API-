@@ -47,6 +47,8 @@ export default {
     typefilter: Array
   },
   methods: {
+    // url => quand on clique sur un pokemon ça renois sur une autre page 
+    // qui affichera sa description à l'aide de son id qu'on met dans le get
     url(index) {
       this.$router.push(`/pokedesc/${index}`);
       window.location.reload();
