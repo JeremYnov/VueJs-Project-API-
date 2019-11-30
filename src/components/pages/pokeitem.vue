@@ -75,15 +75,12 @@ export default {
           window.location.replace("error.php");
         }
         for (let index = 1; index < json.data.results.length; index++) {
-          // console.log("l'index est: " + index)
           axios.get(`https://pokeapi.co/api/v2/item/${index}`).then(async result => {
             await sleep(6000);
                 this.loading = false;
             if (result.status != 200) {
               window.location.replace("error.php");
             }
-            // console.log("l'index est: " + index)
-            // console.log("l'id est: " + result.id)
             let item = {
               id: result.data.id,
               image: result.data.sprites.default,

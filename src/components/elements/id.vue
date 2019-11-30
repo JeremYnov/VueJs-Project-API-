@@ -1,5 +1,6 @@
 <template>
   <div class="poke-id">
+    <!-- Affichage de l'id -->
     <p v-if="id < 10">N°00{{id}}</p>
     <p v-else-if="id < 100">N°0{{id}}</p>
     <p v-else>N°{{id}}</p>
@@ -10,7 +11,7 @@
 export default {
   data() {
     return {
-        id:"",
+      id: "" //Variable qui stock l'id du pokémon
     };
   },
   mounted: function() {
@@ -23,9 +24,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
- .poke-id {
-    color: grey;
-    font-size: 30px;
-    padding-right: 10px;
-  }
+.poke-id {
+  color: grey;
+  font-size: 30px;
+  padding-right: 10px;
+}
 </style>
