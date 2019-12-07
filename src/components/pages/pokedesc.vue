@@ -10,6 +10,7 @@
             <!--Utilisation du component NextButton (@/components/buttons/nextButton.vue) Bouton permettant d'accéder au prochain pokémon-->
             <NextButton />
           </div>
+          <PokeStats/>
 
           <div class="poke-desc">
             <!-- Utilisation du component PokeImage (@components/elements/image.vue) Réccupération de l'image du pokémon -->
@@ -55,6 +56,7 @@
             <!-- Utilisation du component LastEvolution (@components/evolution/lastEvolution.vue) Réccupération de la 3ème évolution du pokémon -->
             <LastEvolution />
           </div>
+          
         </div>
       </div>
     </div>
@@ -76,6 +78,7 @@
   import PokeCategory from "@/components/elements/category";
   import PokeId from "@/components/elements/id";
   import PokeImage from "@/components/elements/image";
+  import PokeStats from "@/components/stats/pokeStats";
   export default {
     //Réccupération des components
     components: {
@@ -91,7 +94,8 @@
       PokeImage,
       PokeWeakness,
       PokeStrength,
-      PokeType
+      PokeType,
+      PokeStats,
     }
     // data() {
     //   return {
