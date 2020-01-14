@@ -8,12 +8,12 @@
         <div id="filter" class="item-filter">
           <div class="item-filter-container">
             <div class="item-logo-filter">
-              <img src="assets/icons/icon-pokeball.png" alt />
+              <img src="../../assets/icons/icon-pokeball.png" alt />
             </div>
             <div class="item-page">
               <router-link to="/pokedex/1">
                 <a>
-                  <img src="assets/icons/icons8-pokédex-50.png" alt />Pokédex
+                  <img src="assets/icons/icons8-pokédex-50.png" alt />Pokeitem
                 </a>
               </router-link>
             </div>
@@ -69,7 +69,7 @@ export default {
       return new Promise(resolve => setTimeout(resolve, milliseconds));
     };
     axios
-      .get("https://pokeapi.co/api/v2/item/?offset=0&limit=200")
+      .get("https://pokeapi.co/api/v2/item/?offset=0&limit=150")
       .then(json => {
         if (json.status != 200) {
           window.location.replace("error.php");
@@ -87,8 +87,9 @@ export default {
               name: result.data.names[6].name,
               description: result.data.flavor_text_entries[6].text
             };
-            // this.infoPokemon[result.id] = pokemon
+            
             this.infoItem.push(item);
+            
           });
         }
       });

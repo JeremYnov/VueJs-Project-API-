@@ -10,7 +10,6 @@
             <!--Utilisation du component NextButton (@/components/buttons/nextButton.vue) Bouton permettant d'accéder au prochain pokémon-->
             <NextButton />
           </div>
-          <PokeStats/>
 
           <div class="poke-desc">
             <!-- Utilisation du component PokeImage (@components/elements/image.vue) Réccupération de l'image du pokémon -->
@@ -78,7 +77,6 @@
   import PokeCategory from "@/components/elements/category";
   import PokeId from "@/components/elements/id";
   import PokeImage from "@/components/elements/image";
-  import PokeStats from "@/components/stats/pokeStats";
   export default {
     //Réccupération des components
     components: {
@@ -95,20 +93,7 @@
       PokeWeakness,
       PokeStrength,
       PokeType,
-      PokeStats,
     }
-    // data() {
-    //   return {
-    //     id: ""
-    //   };
-    // },
-
-    // mounted: function() {
-    //   this.id = window.location.href;
-    //   this.id = this.id.split("/");
-    //   this.id = this.id[this.id.length - 1];
-    //   this.id = Number(this.id);
-    // }
   };
 </script>
 
@@ -117,6 +102,12 @@
     padding: 5.5rem 1.5rem 1.5rem 0;
     max-width: 70%;
   }
+  .poke-logo-filter {
+  padding-bottom: 10px;
+}
+.poke-logo-filter img {
+  height: 80px;
+}
 
   .poke-desc-wrapper {
     background: #f6f6f6;
